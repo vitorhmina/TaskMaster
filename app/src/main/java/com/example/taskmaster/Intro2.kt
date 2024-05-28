@@ -5,22 +5,18 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 
-class Intro1 : AppCompatActivity() {
+class Intro2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.intro_1)
+        setContentView(R.layout.intro_2)
 
-        // Obtenha referência à ImageView
         val imageViewArrow = findViewById<ImageView>(R.id.imageView2)
 
         // Configure o clique na ImageView para iniciar a atividade Intro2
         imageViewArrow.setOnClickListener {
-            val intent = Intent(this, Intro2::class.java)
+            val intent = Intent(this, Intro3::class.java)
             startActivity(intent)
             finish()
         }

@@ -10,51 +10,42 @@
         android:id="@+id/textView"
         android:layout_width="257dp"
         android:layout_height="118dp"
-        android:gravity="center"
         android:text="Welcome to taskmaster"
         android:textSize="45sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.228" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="276dp"
         android:layout_height="121dp"
-        android:gravity="center"
-        android:text="Streamline your team's workflow and stay on top of your projects."
+        android:text="Simplify Tasks. Organize Effortlessly. Achieve Goals"
         android:textSize="25sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintVertical_bias="0.422" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="238dp"
-        android:layout_height="208dp"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69"
-        app:srcCompat="@drawable/dailytasks" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="79dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906"
-        app:srcCompat="@drawable/seta" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="626dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

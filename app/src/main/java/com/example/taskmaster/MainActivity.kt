@@ -3,6 +3,7 @@ package com.example.taskmaster
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +26,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                // Cria um Intent para a nova atividade que você deseja abrir
+                Log.d("MainActivity", "Countdown finished, starting Intro1 activity...")
                 val intent = Intent(this@MainActivity, Intro1::class.java)
-                // Inicia a nova atividade
                 startActivity(intent)
-                // Fecha a atividade atual
+                Log.d("MainActivity", "Intro1 activity started.")
                 finish()
+                Log.d("MainActivity", "MainActivity finished.")
             }
         }.start()
 
