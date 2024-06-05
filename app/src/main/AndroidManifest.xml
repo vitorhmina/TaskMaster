@@ -26,4 +26,6 @@
         <activity android:name=".Intro3" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
