@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="257dp"
         android:layout_height="118dp"
-        android:text="Welcome to taskmaster"
+        android:text="Welcome to TaskMaster"
         android:textSize="45sp"
         android:textStyle="bold"
         android:gravity="center"

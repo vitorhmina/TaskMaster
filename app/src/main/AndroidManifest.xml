@@ -25,6 +25,7 @@
         <activity android:name=".Intro2" />
         <activity android:name=".Intro3" />
         <activity android:name=".SingUP_IN"/>
+        <activity android:name=".SignUp"/>
     </application>
 
 </manifest>

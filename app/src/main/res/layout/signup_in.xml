@@ -33,16 +33,17 @@
 
     <TextView
         android:id="@+id/ideas_in_action"
-        android:layout_width="129dp"
-        android:layout_height="146dp"
+        android:layout_width="188dp"
+        android:layout_height="184dp"
         android:text="Ideas\nin\nAction!"
-        android:textSize="40sp"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
+        app:layout_constraintVertical_bias="0.276" />
 
     <TextView
         android:id="@+id/description"
@@ -55,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintVertical_bias="0.541" />
 
     <Button
         android:id="@+id/sign_up_button"
