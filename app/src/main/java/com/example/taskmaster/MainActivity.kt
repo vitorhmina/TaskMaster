@@ -16,13 +16,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Adicionando manipulação da barra de progresso
+        //barra
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        progressBar.progress = 50 // Definindo o progresso inicial
+        progressBar.progress = 50
 
         object : CountDownTimer(5000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                // Aqui você pode atualizar a barra de progresso a cada segundo se necessário
             }
 
             override fun onFinish() {
