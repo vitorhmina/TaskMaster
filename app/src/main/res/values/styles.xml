@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BlackButton">
+        <item name="android:backgroundTint">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+    <style name="TransparentButton">
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+</resources>
