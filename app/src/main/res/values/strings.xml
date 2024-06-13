@@ -3,4 +3,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="intro_smalltext">Simplify your path\nto success with us.\nLet’s start this\njourney together!</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="introphrase_1">Streamline your team\'s workflow and stay on top of your projects.</string>
+    <string name="introphrase_2">Track Progress, Achieve Milestones</string>
+    <string name="introphrase_3">Simplify Tasks. Organize Effortlessly. Achieve Goals</string>
 </resources>

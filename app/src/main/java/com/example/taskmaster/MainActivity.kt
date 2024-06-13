@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.init_app)
 
         //barra
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
