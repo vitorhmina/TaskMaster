@@ -3,7 +3,6 @@ package com.example.taskmaster
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,21 +15,25 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.init_app)
 
-        //roda
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        progressBar.progress = 50
+        findViewById<ProgressBar>(R.id.progressBar).progress = 50
 
-        object : CountDownTimer(5000, 1000) {
+        object : CountDownTimer(3500, 500) {
             override fun onTick(millisUntilFinished: Long) {
+                // No operation
             }
 
             override fun onFinish() {
-                Log.d("MainActivity", "Countdown finished, starting Intro1 activity...")
-                val intent = Intent(this@MainActivity, Intro1::class.java)
-                startActivity(intent)
-                Log.d("MainActivity", "Intro1 activity started.")
+                val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+                val isFirstRun = sharedPreferences.getBoolean("isFirstRun", true)
+                val intro1_interface = Intent(this@MainActivity, Intro1::class.java)
+                val signup_in_interface = Intent(this@MainActivity, SignUP_IN::class.java)
+
+                if(isFirstRun){
+                    startActivity(intro1_interface)
+                } else{
+                    startActivity(signup_in_interface)
+                }
                 finish()
-                Log.d("MainActivity", "MainActivity finished.")
             }
         }.start()
 

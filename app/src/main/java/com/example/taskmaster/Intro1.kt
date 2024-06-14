@@ -15,10 +15,8 @@ class Intro1 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.intro_1)
 
-        // Obtenha referência à ImageView
         val imageViewArrow = findViewById<ImageView>(R.id.imageView2)
 
-        // Configure o clique na ImageView para iniciar a atividade Intro2
         imageViewArrow.setOnClickListener {
             val intent = Intent(this, Intro2::class.java)
             startActivity(intent)
