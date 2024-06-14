@@ -13,10 +13,18 @@ class SingUP_IN : AppCompatActivity(){
         enableEdgeToEdge()
         setContentView(R.layout.signup_in)
 
-        val buttonNavigate = findViewById<Button>(R.id.sign_up_button)
+        val buttonSignup = findViewById<Button>(R.id.sign_up_button)
 
-        buttonNavigate.setOnClickListener {
+        buttonSignup.setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val buttonSignIn = findViewById<Button>(R.id.sign_in_button)
+
+        buttonSignIn.setOnClickListener {
+            val intent = Intent(this, SignIn::class.java)
             startActivity(intent)
             finish()
         }

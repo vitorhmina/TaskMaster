@@ -10,4 +10,7 @@
     <string name="get_started">Get Started</string>
     <string name="appLoading_Text">Setting up Your Workspace...</string>
     <string name="ideas_in_action">Ideas\nin\nAction!</string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_your_sign_in_information">Enter your sign in information</string>
+    <string name="forgot_password">Forgot Password</string>
 </resources>
