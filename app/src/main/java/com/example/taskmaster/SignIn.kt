@@ -13,6 +13,7 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.StyleSpan
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 
@@ -21,6 +22,12 @@ class SignIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.signin)
+
+        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
+        buttonBack.setOnClickListener {
+            val intent = Intent(this, SingUP_IN::class.java)
+            startActivity(intent)
+        }
 
         // Estilizar o TextView
         val signUpTextView: TextView = findViewById(R.id.signUpTextView)
