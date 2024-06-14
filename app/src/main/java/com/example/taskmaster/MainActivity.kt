@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.init_app)
 
-        //barra
+        //roda
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         progressBar.progress = 50
 

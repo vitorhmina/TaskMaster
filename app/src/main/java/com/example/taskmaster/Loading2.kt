@@ -16,18 +16,16 @@ class Loading2 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.loading_2)
 
-        // Adicionando manipulação da barra de progresso
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        progressBar.progress = 50 // Definindo o progresso inicial
+        progressBar.progress = 50
 
         object : CountDownTimer(5000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                // Aqui você pode atualizar a barra de progresso a cada segundo se necessário
             }
 
             override fun onFinish() {
                 Log.d("MainActivity", "Countdown finished, starting Intro1 activity...")
-                val intent = Intent(this@Loading2, Intro1::class.java)
+                val intent = Intent(this@Loading2, Users::class.java)
                 startActivity(intent)
                 Log.d("MainActivity", "Intro1 activity started.")
                 finish()
