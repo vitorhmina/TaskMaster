@@ -12,14 +12,15 @@
         android:layout_width="321dp"
         android:layout_height="110dp"
         android:gravity="center"
-        android:text="Setting up Your Workspace..."
-        android:textSize="45sp"
+        android:text="@string/appLoading_Text"
+        android:textColor="#000"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <ImageView
         android:id="@+id/myImageView"
@@ -28,10 +29,10 @@
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -43,9 +44,9 @@
         android:progressDrawable="@drawable/round_progress_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.80" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

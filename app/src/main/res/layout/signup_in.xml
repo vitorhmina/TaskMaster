@@ -38,7 +38,7 @@
         android:layout_width="300dp"
         android:layout_height="220dp"
         android:textColor="#000000"
-        android:text="Ideas\nin\nAction!"
+        android:text="@string/ideas_in_action"
         android:textSize="60sp"
         android:textStyle="bold"
         android:letterSpacing="0.07"

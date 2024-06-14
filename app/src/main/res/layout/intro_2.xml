@@ -9,23 +9,36 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="257dp"
-        android:layout_height="118dp"
-        android:text="Welcome to TaskMaster"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/welcome_to"
         android:textSize="45sp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/textViewBrand"
+        android:layout_width="257dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Taskmaster"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="276dp"
         android:layout_height="121dp"
-        android:text="Track Progress, Achieve Milestones"
+        android:text="@string/introphrase_2"
         android:textSize="25sp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906"
+        app:layout_constraintVertical_bias="0.9"
         app:srcCompat="@drawable/seta" />
 
     <ImageView
