@@ -62,17 +62,17 @@
     <Button
         android:id="@+id/getStarted_button"
         style="@style/BlackButton"
-        android:layout_width="342dp"
-        android:layout_height="97dp"
+        android:layout_width="276dp"
+        android:layout_height="80dp"
         android:backgroundTint="@android:color/black"
-        android:text="Get Started"
-        android:textSize="40sp"
+        android:text="@string/get_started"
         android:textColor="@android:color/white"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90" />
+        app:layout_constraintVertical_bias="0.897" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
