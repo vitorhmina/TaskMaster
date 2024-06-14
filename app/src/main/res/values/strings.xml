@@ -17,4 +17,7 @@
     <string name="enter_the_email_who_wants_to_change_the_password">Enter the email who wants to change the password</string>
     <string name="recover">Recover</string>
     <string name="replace_password">Replace Password</string>
+    <string name="replace">Replace</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="password">Password</string>
 </resources>
