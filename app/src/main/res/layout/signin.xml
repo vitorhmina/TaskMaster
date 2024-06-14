@@ -26,6 +26,7 @@
         android:text="@string/sign_in"
         android:textSize="45sp"
         android:textStyle="bold"
+        android:textColor="#000"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
         android:layout_width="406dp"
         android:layout_height="594dp"
         android:background="@drawable/rounded_background"
+        android:backgroundTint="#D9D9D9"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +55,9 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="@string/enter_your_sign_in_information"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="#000"
+            />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -64,7 +68,8 @@
             android:background="@drawable/edit_text_background"
             android:drawableStart="@drawable/email"
             android:drawablePadding="8dp"
-            android:hint="Email"
+            android:drawableTint="#000"
+            android:hint="@string/email"
             android:padding="12dp" />
 
         <RelativeLayout
@@ -80,7 +85,7 @@
                 android:background="@drawable/edit_text_background"
                 android:drawableStart="@drawable/password"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="12dp" />
 
@@ -106,7 +111,8 @@
             android:gravity="end"
             android:text="@string/forgot_password"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#000"/>
 
         <Button
             android:id="@+id/buttonCreateAccount"
@@ -124,13 +130,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="Don’t have an account? Sign Up"
+            android:text="@string/don_t_have_an_account_sign_up"
             android:textSize="20sp"
             android:layout_marginTop="100dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="#000"
+            />
 
     </LinearLayout>
 
