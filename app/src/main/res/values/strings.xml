@@ -13,4 +13,7 @@
     <string name="create_account">Create Account</string>
     <string name="enter_your_sign_in_information">Enter your sign in information</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="recover_password">Recover Password</string>
+    <string name="enter_the_email_who_wants_to_change_the_password">Enter the email who wants to change the password</string>
+    <string name="recover">Recover</string>
 </resources>
