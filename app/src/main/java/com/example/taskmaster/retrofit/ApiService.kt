@@ -9,6 +9,14 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 public interface ApiService {
+
+    // Authentication
+    @POST("auth/signup")
+    fun signup(@Body user: User): Call<User>
+
+    @POST("auth/signin")
+    fun signin(@Body user: User): Call<User>
+
     // Observations
     @GET("observations")
     fun getObservations(): Call<List<Observation>>

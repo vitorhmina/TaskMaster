@@ -16,14 +16,14 @@ class ReplacePassword : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.replacepassword)
 
-        val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
+        val editTextPassword = findViewById<EditText>(R.id.textPassword)
         val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)
         imageViewPasswordVisibility.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
             togglePasswordVisibility(editTextPassword, imageViewPasswordVisibility, isPasswordVisible)
         }
 
-        val editTextRepeatPassword = findViewById<EditText>(R.id.editTextRepeatPassword)
+        val editTextRepeatPassword = findViewById<EditText>(R.id.textRepeatPassword)
         val imageViewRepeatPasswordVisibility = findViewById<ImageView>(R.id.imageViewRepeatPasswordVisibility)
         imageViewRepeatPasswordVisibility.setOnClickListener {
             isRepeatPasswordVisible = !isRepeatPasswordVisible
