@@ -24,4 +24,7 @@
     <string name="email">Email</string>
     <string name="name">Name</string>
     <string name="username">Username</string>
+    <string name="no_internet_1">Oops!\nNo internet.\n</string>
+    <string name="try_again">Try again</string>
+    <string name="no_internet_2">Verify your internet connection.</string>
 </resources>

@@ -3,11 +3,13 @@ package com.example.taskmaster
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,14 +27,22 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
                 val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
                 val isFirstRun = sharedPreferences.getBoolean("isFirstRun", true)
+                var isInternetAvailable = NetworkUtils.isInternetAvailable(this@MainActivity)
                 val intro1_interface = Intent(this@MainActivity, Intro1::class.java)
                 val signup_in_interface = Intent(this@MainActivity, SignUP_IN::class.java)
+                val nointernet_interface = Intent(this@MainActivity, NoInternet::class.java)
 
+                if(!isInternetAvailable){
+                    startActivity(nointernet_interface)
+                    finish()
+                    return
+                }
                 if(isFirstRun){
                     startActivity(intro1_interface)
-                } else{
-                    startActivity(signup_in_interface)
+                    finish()
+                    return
                 }
+                startActivity(signup_in_interface)
                 finish()
             }
         }.start()
