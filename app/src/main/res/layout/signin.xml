@@ -115,7 +115,7 @@
             android:textColor="#000"/>
 
         <Button
-            android:id="@+id/buttonCreateAccount"
+            android:id="@+id/buttonSignIn"
             style="@style/BlackButton"
             android:layout_width="342dp"
             android:layout_height="80dp"

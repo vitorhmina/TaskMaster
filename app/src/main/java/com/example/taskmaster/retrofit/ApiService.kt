@@ -15,7 +15,7 @@ public interface ApiService {
     fun signup(@Body user: User): Call<User>
 
     @POST("auth/signin")
-    fun signin(@Body user: User): Call<User>
+    fun signin(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
     // Observations
     @GET("observations")
