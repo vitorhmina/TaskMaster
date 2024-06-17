@@ -3,7 +3,6 @@ package com.example.taskmaster
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
@@ -16,9 +15,18 @@ class Intro3 : AppCompatActivity(){
         val buttonNavigate = findViewById<Button>(R.id.getStarted_button)
 
         buttonNavigate.setOnClickListener {
-            val intent = Intent(this, SingUP_IN::class.java)
+            val intent = Intent(this, SignUP_IN::class.java)
+
+            introFinished()
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun introFinished() {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isFirstRun", false)
+        editor.apply()
     }
 }

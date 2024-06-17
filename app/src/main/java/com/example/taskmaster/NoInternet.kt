@@ -2,20 +2,20 @@ package com.example.taskmaster
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
-class Intro1 : AppCompatActivity() {
+class NoInternet : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.intro_1)
+        setContentView(R.layout.nointernet)
 
-        val imageViewArrow = findViewById<ImageView>(R.id.imageView2)
+        val buttonTryAgain = findViewById<Button>(R.id.tryagainnetwork_button)
 
-        imageViewArrow.setOnClickListener {
-            val intent = Intent(this, Intro2::class.java)
+        buttonTryAgain.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }

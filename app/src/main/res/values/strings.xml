@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TaskMaster</string>
+    <string name="app_name" translatable="false">TaskMaster</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="intro_smalltext">Simplify your path\nto success with us.\nLet’s start this\njourney together!</string>
@@ -24,6 +24,26 @@
     <string name="email">Email</string>
     <string name="name">Name</string>
     <string name="username">Username</string>
+    <string name="no_internet_1">Oops!\nNo internet.\n</string>
+    <string name="try_again">Try again</string>
+    <string name="no_internet_2">Verify your internet connection.</string>
+    <string name="account_create">Account created successfully</string>
+    <string name="account_create_failed">Failed to create account.
+Try again later!</string>
+    <string name="name_blank">Name cannot be empty</string>
+    <string name="name_length">Name must have at least 2 characters</string>
+    <string name="name_char">Name can only contain letters and spaces</string>
+    <string name="email_blank">Email cannot be empty</string>
+    <string name="email_char">Invalid email format</string>
+    <string name="password_blank">Password cannot be empty</string>
+    <string name="password_length">Password must have at least 6 characters</string>
+    <string name="password_char">Password must contain letters, numbers, and special characters</string>
+    <string name="password_match_failed">Passwords do not match</string>
+    <string name="dont_have_account_signup">Don’t have an account? Sign Up</string>
+    <string name="login_success">Login successful</string>
+    <string name="login_failed">Failed to login.
+ Try again later!</string>
+    <string name="login_blank">Email and Password cannot be empty</string>
     <string name="users">Users</string>
     <string name="projects">Projects</string>
 </resources>
