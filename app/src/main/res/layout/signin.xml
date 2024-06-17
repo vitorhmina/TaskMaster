@@ -125,7 +125,7 @@
             android:textSize="35sp" />
 
         <TextView
-            android:id="@+id/signUpTextView"
+            android:id="@+id/signUpText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -21,16 +21,16 @@ class SignUp: AppCompatActivity() {
     private var repository = Repository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate (savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.signup)
+
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         val textPassword = findViewById<EditText>(R.id.textPassword)
         val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)
         val textRepeatPassword = findViewById<EditText>(R.id.textRepeatPassword)
         val imageViewRepeatPasswordVisibility = findViewById<ImageView>(R.id.imageViewRepeatPasswordVisibility)
         val buttonCreateAccount = findViewById<Button>(R.id.buttonCreateAccount)
-
-        super.onCreate (savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.signup)
 
         buttonBack.setOnClickListener {
             val intent = Intent(this, SignUP_IN::class.java)

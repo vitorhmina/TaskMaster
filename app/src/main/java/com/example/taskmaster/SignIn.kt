@@ -1,5 +1,6 @@
 package com.example.taskmaster
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -31,8 +32,12 @@ class SignIn : AppCompatActivity() {
     private var repository = Repository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.signin)
+
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
-        val signUpTextView: TextView = findViewById(R.id.signUpTextView)
+        val signUpTextView: TextView = findViewById(R.id.signUpText)
         val text = getString(R.string.dont_have_account_signup)
         val spannableString = SpannableString(text)
         val forgotPasswordTextView: TextView = findViewById(R.id.forgotpassword)
@@ -41,10 +46,6 @@ class SignIn : AppCompatActivity() {
         val emailEditText = findViewById<EditText>(R.id.textEmail)
         val passwordEditText = findViewById<EditText>(R.id.textPassword)
         val signinButton = findViewById<Button>(R.id.buttonSignIn)
-
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.signin)
 
         buttonBack.setOnClickListener {
             val intent = Intent(this, SignUP_IN::class.java)
@@ -96,18 +97,15 @@ class SignIn : AppCompatActivity() {
             val password = passwordEditText.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                val loginRequest = LoginRequest(email, password)
-
-                repository.loginUser(loginRequest) { loginResponse, error ->
-                    if (error == null) {
+                repository.signIn(this, email, password) { success, errorMessage ->
+                    if (success) {
                         Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, Loading2::class.java)
-                        intent.putExtra("token", loginResponse?.token)
                         startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
-                        Log.e("SignIn", "Failed to sign in: ${error.message}", error)
+                        Log.e("SignIn", "Failed to sign in: $errorMessage")
                     }
                 }
             } else {
