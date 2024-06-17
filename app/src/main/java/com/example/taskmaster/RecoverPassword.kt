@@ -14,7 +14,7 @@ class RecoverPassword : AppCompatActivity() {
 
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
-            val intent = Intent(this, SingUP_IN::class.java)
+            val intent = Intent(this, SignUP_IN::class.java)
             startActivity(intent)
         }
     }
