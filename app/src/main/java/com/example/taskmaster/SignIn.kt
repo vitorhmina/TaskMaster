@@ -100,7 +100,7 @@ class SignIn : AppCompatActivity() {
                 repository.signIn(this, email, password) { success, errorMessage ->
                     if (success) {
                         Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, Loading2::class.java)
+                        val intent = Intent(this, Projects::class.java)
                         startActivity(intent)
                         finish()
                     } else {

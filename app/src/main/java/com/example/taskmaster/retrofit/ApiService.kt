@@ -66,10 +66,10 @@ public interface ApiService {
     fun deleteUserType(@Path("id") id: Int): Call<Void>
 
     // User Projects
-    @GET("userprojects")
-    fun getUserProjects(): Call<List<UserProject>>
+    @GET("user_projects/getUserProjects")
+    fun getUserProjects(): Call<List<Project>>
 
-    @GET("userprojects/{id}")
+    @GET("userprojects")
     fun getUserProjectById(@Path("id") id: Int): Call<UserProject>
 
     @POST("userprojects")
