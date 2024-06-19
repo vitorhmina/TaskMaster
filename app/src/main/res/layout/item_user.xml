@@ -16,16 +16,16 @@
 
         <TextView
             android:id="@+id/userName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="164dp"
+            android:layout_width="258dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="4dp"
             android:text="John Doe"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editButton"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.395" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/userRole"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="Project Manager"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/userName"
             app:layout_constraintTop_toBottomOf="@+id/userName" />
 
@@ -41,17 +41,21 @@
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/edit_05"
-            tools:layout_editor_absoluteX="255dp"
-            tools:layout_editor_absoluteY="29dp" />
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/edit_05" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/trash_02"
-            tools:layout_editor_absoluteX="318dp"
-            tools:layout_editor_absoluteY="28dp" />
+            android:layout_marginStart="320dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/trash_02" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
