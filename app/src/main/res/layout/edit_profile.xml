@@ -46,10 +46,25 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintVertical_bias="0.272" />
 
+    <ImageView
+        android:id="@+id/edit_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_black_ground"
+        android:padding="12dp"
+        android:src="@drawable/edit"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="@+id/profile_image"
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@android:color/white"/>
+
     <LinearLayout
         android:id="@+id/formContainer"
-        android:layout_width="419dp"
-        android:layout_height="418dp"
+        android:layout_width="414dp"
+        android:layout_height="436dp"
         android:background="@drawable/rounded_background"
         android:backgroundTint="#D9D9D9"
         android:orientation="vertical"
@@ -62,7 +77,7 @@
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/edit_text_background"
             android:drawableStart="@drawable/user"
@@ -82,13 +97,77 @@
             android:padding="12dp"
             android:text="John@gmail.com" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/password"
+                android:drawablePadding="8dp"
+                android:hint="@string/new_password"
+                android:inputType="textPassword"
+                android:padding="12dp" />
+
+            <ImageView
+                android:id="@+id/imageViewPasswordVisibility"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignBottom="@+id/textPassword"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="334dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/visibility" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/textRepeatPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/password"
+                android:drawablePadding="8dp"
+                android:hint="@string/repeat_password"
+                android:inputType="textPassword"
+                android:padding="12dp" />
+
+            <ImageView
+                android:id="@+id/imageViewRepeatPasswordVisibility"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignBottom="@+id/textRepeatPassword"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="334dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/visibility" />
+        </RelativeLayout>
+
         <Button
             android:id="@+id/buttonCreateAccount"
             style="@style/BlackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="1dp"
             android:text="Edit Profile"
             android:textSize="35sp" />
     </LinearLayout>
