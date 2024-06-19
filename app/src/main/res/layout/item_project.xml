@@ -15,10 +15,10 @@
 
         <TextView
             android:id="@+id/projectName"
-            android:layout_width="275dp"
-            android:layout_height="24dp"
+            android:layout_width="270dp"
+            android:layout_height="28dp"
             android:text="Project Name"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/progress"
             app:layout_constraintHorizontal_bias="0.0"
@@ -26,24 +26,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/managerName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Manager Name"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/projectName"
-            app:layout_constraintStart_toStartOf="@+id/projectName"
-            app:layout_constraintTop_toBottomOf="@+id/projectName" />
-
-        <TextView
             android:id="@+id/dueDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="161dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="28dp"
             android:text="Due: June 30, 2024"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/managerName"
-            app:layout_constraintStart_toStartOf="@+id/managerName"
-            app:layout_constraintTop_toBottomOf="@+id/managerName" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/status"
@@ -54,7 +44,7 @@
             android:padding="4dp"
             android:text="Active"
             android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dueDate" />
 
@@ -62,12 +52,12 @@
             android:id="@+id/progress"
             android:layout_width="53dp"
             android:layout_height="24dp"
+            android:layout_marginStart="316dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
             android:text="25/30"
             android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -95,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginEnd="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/check_circle_broken" />

@@ -3,15 +3,17 @@ package com.example.taskmaster
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.Project
+import android.util.Log
+import java.util.*
 import java.text.SimpleDateFormat
-import java.util.Locale
 
 
 class ProjectAdapter(private val projectList: List<Project>) : RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder>() {
+
+    private val displayDateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_project, parent, false)
@@ -22,23 +24,20 @@ class ProjectAdapter(private val projectList: List<Project>) : RecyclerView.Adap
         val currentProject = projectList[position]
         holder.projectName.text = currentProject.name
 
-        // Format the Date object to a String
-        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
-        val formattedDate = dateFormat.format(currentProject.plannedEndDate)
-
-        holder.dueDate.text = formattedDate
-        holder.projectStatus.text = currentProject.status
+        Log.d("ProjectAdapter", "Project: ${currentProject.name}, Planned End Date: ${currentProject.plannedEndDate}")
+        holder.dueDate.text = "Due: ${displayDateFormat.format(currentProject.plannedEndDate)}"
+        holder.status.text = currentProject.status
+        holder.progress.text = "${currentProject.completedTasks}/${currentProject.totalTasks}"
     }
 
-
-    override fun getItemCount() = projectList.size
+    override fun getItemCount(): Int {
+        return projectList.size
+    }
 
     class ProjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val projectName: TextView = itemView.findViewById(R.id.projectName)
-        val managerName: TextView = itemView.findViewById(R.id.managerName)
         val dueDate: TextView = itemView.findViewById(R.id.dueDate)
-        val projectStatus: TextView = itemView.findViewById(R.id.status)
-        val editButton: ImageView = itemView.findViewById(R.id.edit_button)
-        val deleteButton: ImageView = itemView.findViewById(R.id.delete_button)
+        val status: TextView = itemView.findViewById(R.id.status)
+        val progress: TextView = itemView.findViewById(R.id.progress)
     }
 }
