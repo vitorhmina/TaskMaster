@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,21 +17,33 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.init_app)
 
-        //roda
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        progressBar.progress = 50
+        findViewById<ProgressBar>(R.id.progressBar).progress = 50
 
-        object : CountDownTimer(5000, 1000) {
+        object : CountDownTimer(3500, 500) {
             override fun onTick(millisUntilFinished: Long) {
+                // No operation
             }
 
             override fun onFinish() {
-                Log.d("MainActivity", "Countdown finished, starting Intro1 activity...")
-                val intent = Intent(this@MainActivity, Intro1::class.java)
-                startActivity(intent)
-                Log.d("MainActivity", "Intro1 activity started.")
+                val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+                val isFirstRun = sharedPreferences.getBoolean("isFirstRun", true)
+                var isInternetAvailable = NetworkUtils.isInternetAvailable(this@MainActivity)
+                val intro1_interface = Intent(this@MainActivity, Intro1::class.java)
+                val signup_in_interface = Intent(this@MainActivity, SignUP_IN::class.java)
+                val nointernet_interface = Intent(this@MainActivity, NoInternet::class.java)
+
+                if(!isInternetAvailable){
+                    startActivity(nointernet_interface)
+                    finish()
+                    return
+                }
+                if(isFirstRun){
+                    startActivity(intro1_interface)
+                    finish()
+                    return
+                }
+                startActivity(signup_in_interface)
                 finish()
-                Log.d("MainActivity", "MainActivity finished.")
             }
         }.start()
 
