@@ -49,8 +49,35 @@ class Admin_update_user : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerUserType.adapter = adapter
 
+        // Fetch user details by ID and populate UI fields
+        apiService.getUserById(userId).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val user = response.body()
+                    if (user != null) {
+                        // Populate EditText fields with user data
+                        findViewById<EditText>(R.id.editTextName).setText(user.name)
+                        findViewById<EditText>(R.id.editTextEmail).setText(user.email)
+
+                        // Set selected item in spinner based on user type
+                        val userTypeIndex = userTypes.indexOf(user.userType)
+                        spinnerUserType.setSelection(userTypeIndex)
+                    } else {
+                        Toast.makeText(this@Admin_update_user, "User not found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this@Admin_update_user, "Failed to fetch user details", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Toast.makeText(this@Admin_update_user, "Network error", Toast.LENGTH_SHORT).show()
+                Log.e("Admin_update_user", "Failed to fetch user details", t)
+            }
+        })
+
         buttonBack.setOnClickListener {
-            val intent = Intent(this, Projects::class.java)
+            val intent = Intent(this, Users::class.java)
             startActivity(intent)
         }
 

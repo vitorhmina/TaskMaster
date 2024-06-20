@@ -40,13 +40,13 @@ public interface ApiService {
     @GET("users/{id}")
     fun getUserById(@Path("id") id: Int): Call<User>
 
-    @POST("users")
+    @POST("users/create")
     fun createUser(@Body user: User): Call<User>
 
     @PUT("users/update/{id}")
     fun updateUser(@Path("id") id: Int, @Body user: User): Call<User>
 
-    @DELETE("users/{id}")
+    @DELETE("users/delete/{id}")
     fun deleteUser(@Path("id") id: Int): Call<Void>
 
     // User Types

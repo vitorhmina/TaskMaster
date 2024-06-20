@@ -2,6 +2,8 @@ package com.example.taskmaster
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -61,8 +63,25 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
     }
 
     override fun onDeleteUser(userId: Int) {
-        val intent = Intent(this, Loading2::class.java)
-        intent.putExtra("userId", userId)
-        startActivity(intent)
+        apiService.deleteUser(userId).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Users, "User deleted successfully", Toast.LENGTH_SHORT).show()
+                    fetchUsers()
+                } else {
+                    // Log the response details
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("Users", "Failed to delete user: ${response.code()} ${response.message()} $errorBody")
+                    Toast.makeText(this@Users, "Failed to delete user", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Log the throwable message
+                Log.e("Users", "Network error: ${t.message}", t)
+                Toast.makeText(this@Users, "Network error", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
 }
