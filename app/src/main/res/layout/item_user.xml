@@ -38,7 +38,7 @@
             app:layout_constraintTop_toBottomOf="@+id/userName" />
 
         <ImageView
-            android:id="@+id/editButton"
+            android:id="@+id/editIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
@@ -48,7 +48,7 @@
             app:srcCompat="@drawable/edit_05" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/deleteIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="320dp"

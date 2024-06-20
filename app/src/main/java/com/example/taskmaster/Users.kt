@@ -1,5 +1,6 @@
 package com.example.taskmaster
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Users : AppCompatActivity() {
+class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
+
     private lateinit var apiService: ApiService
     private lateinit var recyclerView: RecyclerView
 
@@ -36,10 +38,12 @@ class Users : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val userList = response.body()
                     userList?.let {
-                        val adapter = UserAdapter(it)
+                        val adapter = UserAdapter(it, this@Users)
                         recyclerView.adapter = adapter
                     }
                 } else {
+                    // Handle unsuccessful response
+                    // Show appropriate error message to the user
                 }
             }
 
@@ -48,5 +52,17 @@ class Users : AppCompatActivity() {
                 // Show appropriate error message to the user
             }
         })
+    }
+
+    override fun onUpdateUser(userId: Int) {
+        val intent = Intent(this, Admin_update_user::class.java)
+        intent.putExtra("userId", userId)
+        startActivity(intent)
+    }
+
+    override fun onDeleteUser(userId: Int) {
+        val intent = Intent(this, Loading2::class.java)
+        intent.putExtra("userId", userId)
+        startActivity(intent)
     }
 }

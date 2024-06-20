@@ -33,6 +33,7 @@
         <activity android:name=".Users"/>
         <activity android:name=".NoInternet"/>
         <activity android:name=".Loading2"/>
+        <activity android:name=".Admin_update_user"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
