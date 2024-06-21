@@ -1,6 +1,5 @@
 package com.example.taskmaster
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -21,15 +20,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.example.taskmaster.retrofit.LoginRequest
 import com.example.taskmaster.retrofit.Repository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class SignIn : AppCompatActivity() {
     private var repository = Repository()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,17 +95,17 @@ class SignIn : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 repository.signIn(this, email, password) { success, errorMessage ->
                     if (success) {
-                        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, Projects::class.java)
+                        Toast.makeText(this, getString(R.string.signin_success), Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, Loading2::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.signin_failed), Toast.LENGTH_SHORT).show()
                         Log.e("SignIn", "Failed to sign in: $errorMessage")
                     }
                 }
             } else {
-                Toast.makeText(this, getString(R.string.login_blank), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.signin_blank), Toast.LENGTH_SHORT).show()
             }
         }
     }
