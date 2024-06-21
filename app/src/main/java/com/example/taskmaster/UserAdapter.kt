@@ -7,8 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.User
 import android.util.Log
+import android.widget.ImageView
 
-class UserAdapter(private val userList: List<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(private val userList: List<User>, private val listener: UserItemClickListener) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+
+    interface UserItemClickListener {
+        fun onUpdateUser(userId: Int)
+        fun onDeleteUser(userId: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
@@ -18,27 +24,28 @@ class UserAdapter(private val userList: List<User>) : RecyclerView.Adapter<UserA
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val currentUser = userList[position]
         holder.userName.text = currentUser.name
-        holder.userType.text = getUserType(currentUser.userTypeId)
+        holder.userType.text = currentUser.userType
 
-        Log.d("UserAdapter", "User: ${currentUser.name}, userTypeId: ${currentUser.userTypeId}")
+        // Handle update user click
+        holder.updateIcon.setOnClickListener {
+            listener.onUpdateUser(currentUser.id)
+        }
 
+        // Handle delete user click
+        holder.deleteIcon.setOnClickListener {
+            listener.onDeleteUser(currentUser.id)
+        }
     }
 
     override fun getItemCount(): Int {
         return userList.size
     }
 
-    private fun getUserType(userTypeId: Int?): String {
-        return when (userTypeId) {
-            1 -> "Administrator"
-            2 -> "Project Manager"
-            3 -> "User"
-            else -> "Unknown Role"
-        }
-    }
-
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val userName: TextView = itemView.findViewById(R.id.userName)
         val userType: TextView = itemView.findViewById(R.id.userRole)
+        val updateIcon: ImageView = itemView.findViewById(R.id.editIcon)
+        val deleteIcon: ImageView = itemView.findViewById(R.id.deleteIcon)
+
     }
 }

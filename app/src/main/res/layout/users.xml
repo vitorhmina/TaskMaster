@@ -55,8 +55,8 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNavBar"
-        android:layout_width="419dp"
-        android:layout_height="87dp"
+        android:layout_width="422dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

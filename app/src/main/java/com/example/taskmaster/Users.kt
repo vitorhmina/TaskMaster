@@ -1,6 +1,9 @@
 package com.example.taskmaster
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +15,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Users : AppCompatActivity() {
+class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
+
     private lateinit var apiService: ApiService
     private lateinit var recyclerView: RecyclerView
 
@@ -36,10 +40,12 @@ class Users : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val userList = response.body()
                     userList?.let {
-                        val adapter = UserAdapter(it)
+                        val adapter = UserAdapter(it, this@Users)
                         recyclerView.adapter = adapter
                     }
                 } else {
+                    // Handle unsuccessful response
+                    // Show appropriate error message to the user
                 }
             }
 
@@ -49,4 +55,33 @@ class Users : AppCompatActivity() {
             }
         })
     }
+
+    override fun onUpdateUser(userId: Int) {
+        val intent = Intent(this, Admin_update_user::class.java)
+        intent.putExtra("userId", userId)
+        startActivity(intent)
+    }
+
+    override fun onDeleteUser(userId: Int) {
+        apiService.deleteUser(userId).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Users, "User deleted successfully", Toast.LENGTH_SHORT).show()
+                    fetchUsers()
+                } else {
+                    // Log the response details
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("Users", "Failed to delete user: ${response.code()} ${response.message()} $errorBody")
+                    Toast.makeText(this@Users, "Failed to delete user", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Log the throwable message
+                Log.e("Users", "Network error: ${t.message}", t)
+                Toast.makeText(this@Users, "Network error", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 }

@@ -8,5 +8,5 @@ data class User(
     val password: String,
     val name: String,
     val photo: String?,
-    @SerializedName("user_type_id") val userTypeId: Int?
+    @SerializedName("user_type") val userType: String?
 )
