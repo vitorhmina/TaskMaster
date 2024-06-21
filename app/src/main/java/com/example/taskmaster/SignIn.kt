@@ -1,11 +1,13 @@
 package com.example.taskmaster
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Color
+import android.text.InputType
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
@@ -18,6 +20,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -29,8 +32,12 @@ import retrofit2.Response
 
 
 class SignIn : AppCompatActivity() {
+
+    private var isPasswordVisible = false
+    private var isRepeatPasswordVisible = false
     private var repository = Repository()
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,10 +53,24 @@ class SignIn : AppCompatActivity() {
         val emailEditText = findViewById<EditText>(R.id.textEmail)
         val passwordEditText = findViewById<EditText>(R.id.textPassword)
         val signinButton = findViewById<Button>(R.id.buttonSignIn)
+        val textPassword = findViewById<EditText>(R.id.textPassword)
+        val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)
+        val textRepeatPassword = findViewById<EditText>(R.id.textRepeatPassword)
+        val imageViewRepeatPasswordVisibility = findViewById<ImageView>(R.id.imageViewRepeatPasswordVisibility)
 
         buttonBack.setOnClickListener {
             val intent = Intent(this, SignUP_IN::class.java)
             startActivity(intent)
+        }
+
+        imageViewPasswordVisibility.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            togglePasswordVisibility(textPassword, imageViewPasswordVisibility, isPasswordVisible)
+        }
+
+        imageViewRepeatPasswordVisibility.setOnClickListener {
+            isRepeatPasswordVisible = !isRepeatPasswordVisible
+            togglePasswordVisibility(textRepeatPassword, imageViewRepeatPasswordVisibility, isRepeatPasswordVisible)
         }
 
 
@@ -112,5 +133,15 @@ class SignIn : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.login_blank), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun togglePasswordVisibility(editText: EditText, imageView: ImageView, isVisible: Boolean) {
+        if (isVisible) {
+            editText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            imageView.setImageResource(R.drawable.visibility)
+        } else {
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            imageView.setImageResource(R.drawable.visibility_off)
+        }
+        editText.setSelection(editText.text.length)
     }
 }

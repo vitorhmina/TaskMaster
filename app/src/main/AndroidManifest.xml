@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Intro1" />
-        <activity android:name=".Intro2" />
-        <activity android:name=".Intro3" />
+        <activity android:name=".Intro1"/>
+        <activity android:name=".Intro2"/>
+        <activity android:name=".Intro3"/>
         <activity android:name=".SignUP_IN"/>
         <activity android:name=".SignUp"/>
         <activity android:name=".SignIn"/>
@@ -34,7 +34,5 @@
         <activity android:name=".NoInternet"/>
         <activity android:name=".Loading2"/>
     </application>
-
     <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>
