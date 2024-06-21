@@ -1,7 +1,5 @@
 package com.example.taskmaster
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -24,11 +22,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.example.taskmaster.retrofit.LoginRequest
 import com.example.taskmaster.retrofit.Repository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class SignIn : AppCompatActivity() {
@@ -36,8 +30,6 @@ class SignIn : AppCompatActivity() {
     private var isPasswordVisible = false
     private var isRepeatPasswordVisible = false
     private var repository = Repository()
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,9 +47,6 @@ class SignIn : AppCompatActivity() {
         val signinButton = findViewById<Button>(R.id.buttonSignIn)
         val textPassword = findViewById<EditText>(R.id.textPassword)
         val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)
-        val textRepeatPassword = findViewById<EditText>(R.id.textRepeatPassword)
-        val imageViewRepeatPasswordVisibility = findViewById<ImageView>(R.id.imageViewRepeatPasswordVisibility)
-
         buttonBack.setOnClickListener {
             val intent = Intent(this, SignUP_IN::class.java)
             startActivity(intent)
@@ -67,12 +56,6 @@ class SignIn : AppCompatActivity() {
             isPasswordVisible = !isPasswordVisible
             togglePasswordVisibility(textPassword, imageViewPasswordVisibility, isPasswordVisible)
         }
-
-        imageViewRepeatPasswordVisibility.setOnClickListener {
-            isRepeatPasswordVisible = !isRepeatPasswordVisible
-            togglePasswordVisibility(textRepeatPassword, imageViewRepeatPasswordVisibility, isRepeatPasswordVisible)
-        }
-
 
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
@@ -120,17 +103,17 @@ class SignIn : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 repository.signIn(this, email, password) { success, errorMessage ->
                     if (success) {
-                        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, Projects::class.java)
+                        Toast.makeText(this, getString(R.string.signin_success), Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, Loading2::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.signin_failed), Toast.LENGTH_SHORT).show()
                         Log.e("SignIn", "Failed to sign in: $errorMessage")
                     }
                 }
             } else {
-                Toast.makeText(this, getString(R.string.login_blank), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.signin_blank), Toast.LENGTH_SHORT).show()
             }
         }
     }

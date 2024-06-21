@@ -1,5 +1,6 @@
 package com.example.taskmaster
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -15,6 +16,11 @@ class Loading2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.loading_2)
+
+        // Retrieve the userId and token from SharedPreferences
+        val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("userId", -1)
+        val token = sharedPreferences.getString("token", null)
 
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         progressBar.progress = 50

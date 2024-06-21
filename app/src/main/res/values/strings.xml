@@ -40,10 +40,10 @@ Try again later!</string>
     <string name="password_char">Password must contain letters, numbers, and special characters</string>
     <string name="password_match_failed">Passwords do not match</string>
     <string name="dont_have_account_signup">Don’t have an account? Sign Up</string>
-    <string name="login_success">Login successful</string>
-    <string name="login_failed">Failed to login.
+    <string name="signin_success">Sign In successful</string>
+    <string name="signin_failed">Failed to sign in.
  Try again later!</string>
-    <string name="login_blank">Email and Password cannot be empty</string>
+    <string name="signin_blank">Email and Password cannot be empty</string>
     <string name="users">Users</string>
     <string name="projects">Projects</string>
     <string name="profile">Profile</string>

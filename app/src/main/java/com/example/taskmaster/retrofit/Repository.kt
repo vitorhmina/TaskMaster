@@ -5,6 +5,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 class Repository() {
     private val apiService = RetrofitClient.apiService
@@ -33,16 +34,21 @@ class Repository() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful && response.body() != null) {
                     val token = response.body()!!.token
-                    context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-                        .edit().putString("token", token).apply()
+                    val userId = response.body()!!.userId
+                    val sharedPreferences = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+                    with(sharedPreferences.edit()) {
+                        putString("token", token)
+                        putInt("userId", userId)
+                        apply()
+                    }
                     callback(true, null)
                 } else {
-                    callback(false, Throwable("Failed to create user: ${response.code()} ${response.message()}").toString())
+                    callback(false, "Failed to sign in: ${response.code()} ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                callback(false, Throwable("Failed to create user: ${t.message}").toString())
+                callback(false, "Failed to sign in: ${t.message}")
             }
         })
     }
