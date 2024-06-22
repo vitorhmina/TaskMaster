@@ -9,7 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
 
-class CreateTask : AppCompatActivity() {
+class EditTask : AppCompatActivity() {
     lateinit var startDateEditText: EditText
     lateinit var endDateEditText: EditText
 
