@@ -1,5 +1,6 @@
 package com.example.taskmaster
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.TextView
 import com.example.taskmaster.retrofit.Project
 
@@ -34,8 +36,13 @@ class Tasks : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         titleTextView = findViewById(R.id.title)
+        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
 
-        // Fetch projects from API
+        buttonBack.setOnClickListener {
+            val intent = Intent(this, Projects::class.java)
+            startActivity(intent)
+        }
+
         fetchProjectName()
         fetchTasks()
     }
