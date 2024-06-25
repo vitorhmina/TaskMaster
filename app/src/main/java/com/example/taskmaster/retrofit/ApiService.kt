@@ -114,8 +114,8 @@ public interface ApiService {
     fun deleteUserTask(@Path("id") id: Int): Call<Void>
 
     // Tasks
-    @GET("tasks")
-    fun getTasks(): Call<List<Task>>
+    @GET("tasks/getProjectTasks/{id}")
+    fun getProjectTasks(@Path("id") id: Int): Call<List<Task>>
 
     @GET("tasks/{id}")
     fun getTaskById(@Path("id") id: Int): Call<Task>

@@ -1,5 +1,6 @@
 package com.example.taskmaster
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
+import android.widget.Toast
 
-class Projects : AppCompatActivity() {
+class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
     private lateinit var apiService: ApiService
     private lateinit var recyclerView: RecyclerView
 
@@ -36,23 +38,53 @@ class Projects : AppCompatActivity() {
             override fun onResponse(call: Call<List<Project>>, response: Response<List<Project>>) {
                 if (response.isSuccessful) {
                     val projectList = response.body()
-                    if (projectList != null) {
-                        val adapter = ProjectAdapter(projectList)
+                    projectList?.let {
+                        val adapter = ProjectAdapter(it, this@Projects)
                         recyclerView.adapter = adapter
-                    } else {
-                        Log.e("Projects", "Project list is null or empty")
-                        // Handle null or empty case if necessary
                     }
                 } else {
                     Log.e("Projects", "Failed to fetch projects: ${response.errorBody()?.string()}")
-                    // Handle error response if necessary
                 }
             }
 
             override fun onFailure(call: Call<List<Project>>, t: Throwable) {
                 Log.e("Projects", "API call failed", t)
-                // Handle network errors or API call failures
-                // Show appropriate error message to the user
+            }
+        })
+    }
+
+    override fun onItemClicked(projectId: Int) {
+        val intent = Intent(this, Tasks::class.java)
+        intent.putExtra("projectId", projectId)
+        startActivity(intent)
+    }
+
+    //NOT CORRECT FIX WHEN USER TYPE CONTEXT ADDED
+    override fun onUpdateProject(projectId: Int) {
+        val intent = Intent(this, Loading2::class.java)
+        intent.putExtra("projectId", projectId)
+        startActivity(intent)
+    }
+
+    //NOT CORRECT FIX WHEN USER TYPE CONTEXT ADDED
+    override fun onDeleteProject(projectId: Int) {
+        apiService.deleteUser(projectId).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Projects, "User deleted successfully", Toast.LENGTH_SHORT).show()
+                    fetchProjects()
+                } else {
+                    // Log the response details
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("Users", "Failed to delete user: ${response.code()} ${response.message()} $errorBody")
+                    Toast.makeText(this@Projects, "Failed to delete user", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Log the throwable message
+                Log.e("Users", "Network error: ${t.message}", t)
+                Toast.makeText(this@Projects, "Network error", Toast.LENGTH_SHORT).show()
             }
         })
     }

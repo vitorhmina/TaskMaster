@@ -7,13 +7,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.Project
 import android.util.Log
+import android.widget.ImageView
 import java.util.*
 import java.text.SimpleDateFormat
 
 
-class ProjectAdapter(private val projectList: List<Project>) : RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder>() {
+class ProjectAdapter(private val projectList: List<Project>, private val listener: ProjectItemClickListener) : RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder>() {
 
     private val displayDateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+
+    interface ProjectItemClickListener {
+        fun onItemClicked(projectId: Int)
+        fun onUpdateProject(projectId: Int)
+        fun onDeleteProject(projectId: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_project, parent, false)
@@ -28,6 +35,21 @@ class ProjectAdapter(private val projectList: List<Project>) : RecyclerView.Adap
         holder.dueDate.text = "Due: ${displayDateFormat.format(currentProject.plannedEndDate)}"
         holder.status.text = currentProject.status
         holder.progress.text = "${currentProject.completedTasks}/${currentProject.totalTasks}"
+
+        // Set a click listener for the entire card view
+        holder.itemView.setOnClickListener {
+            listener.onItemClicked(currentProject.id)
+        }
+
+        // Handle update project click
+        holder.updateIcon.setOnClickListener {
+            listener.onUpdateProject(currentProject.id)
+        }
+
+        // Handle delete project click
+        holder.deleteIcon.setOnClickListener {
+            listener.onDeleteProject(currentProject.id)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -39,5 +61,8 @@ class ProjectAdapter(private val projectList: List<Project>) : RecyclerView.Adap
         val dueDate: TextView = itemView.findViewById(R.id.dueDate)
         val status: TextView = itemView.findViewById(R.id.status)
         val progress: TextView = itemView.findViewById(R.id.progress)
+        val updateIcon: ImageView = itemView.findViewById(R.id.edit_button)
+        val deleteIcon: ImageView = itemView.findViewById(R.id.delete_button)
+
     }
 }

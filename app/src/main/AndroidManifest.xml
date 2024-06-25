@@ -30,10 +30,12 @@
         <activity android:name=".RecoverPassword"/>
         <activity android:name=".ReplacePassword"/>
         <activity android:name=".Projects"/>
+        <activity android:name=".Tasks"/>
         <activity android:name=".Users"/>
         <activity android:name=".NoInternet"/>
         <activity android:name=".Loading2"/>
         <activity android:name=".Admin_update_user"/>
+        <activity android:name=".Admin_create_user"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
