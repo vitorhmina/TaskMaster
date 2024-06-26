@@ -107,7 +107,6 @@ class Admin_update_user : AppCompatActivity() {
                 call.enqueue(object : Callback<User> {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if (response.isSuccessful) {
-                            // Handle successful response
                             Toast.makeText(this@Admin_update_user, "User updated successfully", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@Admin_update_user, Users::class.java)
                             startActivity(intent)
@@ -120,7 +119,6 @@ class Admin_update_user : AppCompatActivity() {
 
 
                     override fun onFailure(call: Call<User>, t: Throwable) {
-                        // Handle network errors or API call failures
                         Toast.makeText(this@Admin_update_user, "Network error", Toast.LENGTH_SHORT).show()
                     }
                 })

@@ -38,8 +38,6 @@ class Assign_User_to_Project : AppCompatActivity() {
         buttonAssignToProject.setOnClickListener {
             AssignToProject()
         }
-
-
     }
 
     private fun navigateToUserProjectsActivity() {
@@ -52,17 +50,14 @@ class Assign_User_to_Project : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
         val role = findViewById<EditText>(R.id.editTextRole).text.toString()
 
-        // Ensure projectId is not null or invalid
         if (projectId == -1) {
             Toast.makeText(this@Assign_User_to_Project, "Invalid project ID", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Create Task object with ISO-8601 date strings and valid projectId
         val userProject = UserProject(0, null, email, role, null, projectId)
         Log.d(TAG, "User Project creation request: $userProject")
 
-        // Make API call to create task
         val call = apiService.createUserProject(userProject)
         call.enqueue(object : Callback<UserProject?> {
             override fun onResponse(call: Call<UserProject?>, response: Response<UserProject?>) {

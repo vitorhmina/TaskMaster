@@ -17,7 +17,6 @@ class Loading2 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.loading_2)
 
-        // Retrieve the userId and token from SharedPreferences
         val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val userId = sharedPreferences.getInt("userId", -1)
         val token = sharedPreferences.getString("token", null)

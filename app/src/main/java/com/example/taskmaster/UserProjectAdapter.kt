@@ -26,12 +26,10 @@ class UserProjectAdapter(private val userProjectList: List<UserProject>, private
         holder.userName.text = currentUserProject.name
         holder.role.text = currentUserProject.role
 
-        // Handle update user click
         holder.updateIcon.setOnClickListener {
             listener.onUpdateUserProject(currentUserProject.id)
         }
 
-        // Handle delete user click
         holder.deleteIcon.setOnClickListener {
             listener.onDeleteUserProject(currentUserProject.id)
         }

@@ -26,12 +26,10 @@ class UserAdapter(private val userList: List<User>, private val listener: UserIt
         holder.userName.text = currentUser.name
         holder.userType.text = currentUser.userType
 
-        // Handle update user click
         holder.updateIcon.setOnClickListener {
             listener.onUpdateUser(currentUser.id)
         }
 
-        // Handle delete user click
         holder.deleteIcon.setOnClickListener {
             listener.onDeleteUser(currentUser.id)
         }

@@ -52,7 +52,6 @@ class Update_Project : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val project = response.body()
                     if (project != null) {
-                        // Populate EditText fields with task data
                         findViewById<EditText>(R.id.editTextName).setText(project.name)
                         findViewById<EditText>(R.id.editTextDescription).setText(project.description)
                         findViewById<EditText>(R.id.startDateEditText).setText(formatDateForDisplay(project.startDate))
@@ -98,13 +97,11 @@ class Update_Project : AppCompatActivity() {
         val endDate = parseDate(endDateString)
         val actualEndDate = parseDate(actualEndDateString)
 
-        // Check if any of the parsed dates are null
         if (startDate == null || endDate == null) {
             Toast.makeText(this@Update_Project, "Invalid date format", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Format non-null dates to ISO format
         val isoStartDate = startDate?.let { formatDateToISO(it) }
         val isoEndDate = endDate?.let { formatDateToISO(it) }
         val isoActualEndDate = actualEndDate?.let { formatDateToISO(it) }
@@ -112,7 +109,6 @@ class Update_Project : AppCompatActivity() {
         val project = Project(projectId, name, description, isoStartDate!!, isoEndDate!!, isoActualEndDate, statusSelected, null, null)
         Log.d(TAG, "Project update request: $project")
 
-        // Make API call to update task
         val call = apiService.updateProject(projectId, project)
         call.enqueue(object : Callback<Project?> {
             override fun onResponse(call: Call<Project?>, response: Response<Project?>) {

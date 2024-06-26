@@ -49,13 +49,11 @@ class Update_Task : AppCompatActivity() {
         setupDatePicker(findViewById(R.id.endDateEditText))
         setupDatePicker(findViewById(R.id.actualEndDateEditText))
 
-        // Fetch task details by ID and populate UI fields
         apiService.getTaskById(taskId).enqueue(object : Callback<Task> {
             override fun onResponse(call: Call<Task>, response: Response<Task>) {
                 if (response.isSuccessful) {
                     val task = response.body()
                     if (task != null) {
-                        // Populate EditText fields with task data
                         findViewById<EditText>(R.id.editTextName).setText(task.name)
                         findViewById<EditText>(R.id.editTextDescription).setText(task.description)
                         findViewById<EditText>(R.id.startDateEditText).setText(formatDateForDisplay(task.startDate))
@@ -104,13 +102,11 @@ class Update_Task : AppCompatActivity() {
         val endDate = parseDate(endDateString)
         val actualEndDate = parseDate(actualEndDateString)
 
-        // Check if any of the parsed dates are null
         if (startDate == null || endDate == null) {
             Toast.makeText(this@Update_Task, "Invalid date format", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Format non-null dates to ISO format
         val isoStartDate = startDate?.let { formatDateToISO(it) }
         val isoEndDate = endDate?.let { formatDateToISO(it) }
         val isoActualEndDate = actualEndDate?.let { formatDateToISO(it) }
@@ -118,7 +114,6 @@ class Update_Task : AppCompatActivity() {
         val task = Task(taskId, name, description, isoStartDate!!, isoEndDate!!, isoActualEndDate, statusSelected, projectId)
         Log.d(TAG, "Task update request: $task")
 
-        // Make API call to update task
         val call = apiService.updateTask(taskId, task)
         call.enqueue(object : Callback<Task?> {
             override fun onResponse(call: Call<Task?>, response: Response<Task?>) {

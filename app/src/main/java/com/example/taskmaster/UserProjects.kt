@@ -44,7 +44,6 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
             startActivity(intent)
         }
 
-        // Set click listener for buttonAdd
         val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
         buttonAdd.setOnClickListener {
             val intent = Intent(this, Assign_User_to_Project::class.java)
@@ -52,7 +51,6 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
             startActivity(intent)
         }
 
-        // Fetch users from API
         fetchProjectTeam()
     }
 
@@ -66,14 +64,10 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
                         recyclerView.adapter = adapter
                     }
                 } else {
-                    // Handle unsuccessful response
-                    // Show appropriate error message to the user
                 }
             }
 
             override fun onFailure(call: Call<List<UserProject>>, t: Throwable) {
-                // Handle network errors or API call failures
-                // Show appropriate error message to the user
             }
         })
     }

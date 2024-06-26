@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         object : CountDownTimer(3500, 500) {
             override fun onTick(millisUntilFinished: Long) {
-                // No operation
             }
 
             override fun onFinish() {

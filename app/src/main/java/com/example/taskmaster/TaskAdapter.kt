@@ -47,12 +47,14 @@ class TaskAdapter(
             taskStatusTextView.text = task.status
             taskEndDateTextView.text = formatDate(task.plannedEndDate)
 
-            // Handle update task click
+            itemView.findViewById<View>(R.id.users_button).setOnClickListener {
+                taskItemClickListener.onUsersClicked(task.id)
+            }
+
             itemView.findViewById<View>(R.id.edit_button).setOnClickListener {
                 taskItemClickListener.onUpdateTask(task.id)
             }
 
-            // Handle delete task click
             itemView.findViewById<View>(R.id.delete_button).setOnClickListener {
                 taskItemClickListener.onDeleteTask(task.id)
             }

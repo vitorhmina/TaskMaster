@@ -14,7 +14,6 @@ class Intro2 : AppCompatActivity() {
 
         val imageViewArrow = findViewById<ImageView>(R.id.imageView2)
 
-        // Configure o clique na ImageView para iniciar a atividade Intro2
         imageViewArrow.setOnClickListener {
             val intent = Intent(this, Intro3::class.java)
             startActivity(intent)

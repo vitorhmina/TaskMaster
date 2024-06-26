@@ -43,8 +43,6 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
             startActivity(intent)
         }
 
-
-        // Fetch users from API
         fetchUsers()
     }
 
@@ -58,14 +56,10 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
                         recyclerView.adapter = adapter
                     }
                 } else {
-                    // Handle unsuccessful response
-                    // Show appropriate error message to the user
                 }
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                // Handle network errors or API call failures
-                // Show appropriate error message to the user
             }
         })
     }
@@ -83,7 +77,6 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
                     Toast.makeText(this@Users, "User deleted successfully", Toast.LENGTH_SHORT).show()
                     fetchUsers()
                 } else {
-                    // Log the response details
                     val errorBody = response.errorBody()?.string()
                     Log.e("Users", "Failed to delete user: ${response.code()} ${response.message()} $errorBody")
                     Toast.makeText(this@Users, "Failed to delete user", Toast.LENGTH_SHORT).show()
@@ -91,7 +84,6 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                // Log the throwable message
                 Log.e("Users", "Network error: ${t.message}", t)
                 Toast.makeText(this@Users, "Network error", Toast.LENGTH_SHORT).show()
             }

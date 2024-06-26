@@ -31,10 +31,8 @@ class AdminProjects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListen
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Fetch projects from API
         fetchProjects()
 
-        // Set click listener for buttonAdd
         val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
         buttonAdd.setOnClickListener {
             val intent = Intent(this, Create_Project::class.java)

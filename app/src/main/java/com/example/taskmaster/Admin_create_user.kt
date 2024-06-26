@@ -33,8 +33,6 @@ class Admin_create_user : AppCompatActivity() {
 
         apiService = RetrofitClient.getApiServiceWithAuth(this)
 
-        val userId = intent.getIntExtra("userId", -1)
-
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         val textPassword = findViewById<EditText>(R.id.textPassword)
         val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)

@@ -75,17 +75,14 @@ class Create_Task : AppCompatActivity() {
         val isoStartDate = formatDateToISO(startDate)
         val isoEndDate = formatDateToISO(endDate)
 
-        // Ensure projectId is not null or invalid
         if (projectId == -1) {
             Toast.makeText(this@Create_Task, "Invalid project ID", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Create Task object with ISO-8601 date strings and valid projectId
         val task = Task(0, name, description, isoStartDate, isoEndDate, null, statusSelected, projectId)
         Log.d(TAG, "Task creation request: $task")
 
-        // Make API call to create task
         val call = apiService.createTask(task)
         call.enqueue(object : Callback<Task?> {
             override fun onResponse(call: Call<Task?>, response: Response<Task?>) {

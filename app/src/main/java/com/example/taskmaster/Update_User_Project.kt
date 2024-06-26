@@ -34,7 +34,6 @@ class Update_User_Project : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Fetch user project details by ID and populate UI fields
         fetchUserProjectDetails()
 
         val buttonUpdate = findViewById<Button>(R.id.buttonUpdateUserProject)

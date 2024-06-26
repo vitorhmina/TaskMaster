@@ -48,7 +48,6 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
             startActivity(intent)
         }
 
-        // Set click listener for buttonAdd
         val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
         buttonAdd.setOnClickListener {
             val intent = Intent(this, Create_Task::class.java)
