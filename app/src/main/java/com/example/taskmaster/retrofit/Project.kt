@@ -3,7 +3,6 @@ package com.example.taskmaster.retrofit
 import java.util.Date
 import com.google.gson.annotations.SerializedName
 
-
 data class Project(
     val id: Int,
     val name: String,

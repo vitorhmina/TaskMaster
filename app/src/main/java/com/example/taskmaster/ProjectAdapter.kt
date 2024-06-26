@@ -6,15 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.Project
-import android.util.Log
-import android.widget.ImageView
-import java.util.*
 import java.text.SimpleDateFormat
+import java.util.*
 
-
-class ProjectAdapter(private val projectList: List<Project>, private val listener: ProjectItemClickListener) : RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder>() {
-
-    private val displayDateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+class ProjectAdapter(
+    private val projectList: List<Project>,
+    private val listener: ProjectItemClickListener
+) : RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder>() {
 
     interface ProjectItemClickListener {
         fun onItemClicked(projectId: Int)
@@ -29,47 +27,48 @@ class ProjectAdapter(private val projectList: List<Project>, private val listene
     }
 
     override fun onBindViewHolder(holder: ProjectViewHolder, position: Int) {
-        val currentProject = projectList[position]
-        holder.projectName.text = currentProject.name
-
-        Log.d("ProjectAdapter", "Project: ${currentProject.name}, Planned End Date: ${currentProject.plannedEndDate}")
-        holder.dueDate.text = "Due: ${displayDateFormat.format(currentProject.plannedEndDate)}"
-        holder.status.text = currentProject.status
-        holder.progress.text = "${currentProject.completedTasks}/${currentProject.totalTasks}"
-
-        // Set a click listener for the entire card view
-        holder.itemView.setOnClickListener {
-            listener.onItemClicked(currentProject.id)
-        }
-
-        // Set a click listener for the entire card view
-        holder.usersIcon.setOnClickListener {
-            listener.onUsersClicked(currentProject.id)
-        }
-
-        // Handle update project click
-        holder.updateIcon.setOnClickListener {
-            listener.onUpdateProject(currentProject.id)
-        }
-
-        // Handle delete project click
-        holder.deleteIcon.setOnClickListener {
-            listener.onDeleteProject(currentProject.id)
-        }
+        val project = projectList[position]
+        holder.bind(project)
     }
 
     override fun getItemCount(): Int {
         return projectList.size
     }
 
-    class ProjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val projectName: TextView = itemView.findViewById(R.id.projectName)
-        val dueDate: TextView = itemView.findViewById(R.id.dueDate)
-        val status: TextView = itemView.findViewById(R.id.status)
-        val progress: TextView = itemView.findViewById(R.id.progress)
-        val usersIcon: ImageView = itemView.findViewById(R.id.users_button)
-        val updateIcon: ImageView = itemView.findViewById(R.id.edit_button)
-        val deleteIcon: ImageView = itemView.findViewById(R.id.delete_button)
+    inner class ProjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val projectNameTextView: TextView = itemView.findViewById(R.id.projectName)
+        private val projectStatusTextView: TextView = itemView.findViewById(R.id.status)
+        private val projectEndDateTextView: TextView = itemView.findViewById(R.id.dueDate)
 
+        private val isoDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+
+        fun bind(project: Project) {
+            projectNameTextView.text = project.name
+            projectStatusTextView.text = project.status
+            projectEndDateTextView.text = formatDate(project.plannedEndDate)
+
+            itemView.findViewById<View>(R.id.edit_button).setOnClickListener {
+                listener.onUpdateProject(project.id)
+            }
+
+            itemView.findViewById<View>(R.id.delete_button).setOnClickListener {
+                listener.onDeleteProject(project.id)
+            }
+        }
+
+        private fun formatDate(dateString: String?): String {
+            return if (dateString != null) {
+                try {
+                    val date = isoDateFormat.parse(dateString)
+                    date?.let {
+                        SimpleDateFormat("MMM dd, yyyy", Locale.US).format(it)
+                    } ?: "Invalid date"
+                } catch (e: Exception) {
+                    "Invalid date"
+                }
+            } else {
+                "No date"
+            }
+        }
     }
 }
