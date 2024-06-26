@@ -40,6 +40,12 @@ class AdminProjects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListen
             val intent = Intent(this, Create_Project::class.java)
             startActivity(intent)
         }
+
+        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
+        buttonBack.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchProjects() {

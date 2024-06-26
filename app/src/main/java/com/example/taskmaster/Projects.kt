@@ -34,6 +34,12 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
         // Fetch projects from API
         fetchProjects()
 
+        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
+        buttonBack.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
+
         // Set click listener for buttonAdd
         val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
         buttonAdd.setOnClickListener {

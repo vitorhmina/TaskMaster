@@ -31,12 +31,18 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Set click listener for buttonAdd
         val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
         buttonAdd.setOnClickListener {
             val intent = Intent(this, Admin_create_user::class.java)
             startActivity(intent)
         }
+
+        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
+        buttonBack.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
+
 
         // Fetch users from API
         fetchUsers()
