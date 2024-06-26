@@ -7,9 +7,9 @@ data class Task(
     val id: Int,
     val name: String,
     val description: String?,
-    val startDate: Date,
-    @SerializedName("planned_end_date") val plannedEndDate: Date,
-    val actualEndDate: Date?,
+    @SerializedName("start_date") val startDate: String,
+    @SerializedName("planned_end_date") val plannedEndDate: String,
+    val actualEndDate: String?,
     val status: String?,
-    val projectId: Int?
+    @SerializedName("project_id") val projectId: Int
 )

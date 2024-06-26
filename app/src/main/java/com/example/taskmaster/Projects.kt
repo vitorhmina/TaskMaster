@@ -14,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
     private lateinit var apiService: ApiService
@@ -73,26 +74,36 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
         startActivity(intent)
     }
 
-    //NOT CORRECT FIX WHEN USER TYPE CONTEXT ADDED
     override fun onDeleteProject(projectId: Int) {
-        apiService.deleteUser(projectId).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@Projects, "User deleted successfully", Toast.LENGTH_SHORT).show()
-                    fetchProjects()
-                } else {
-                    // Log the response details
-                    val errorBody = response.errorBody()?.string()
-                    Log.e("Users", "Failed to delete user: ${response.code()} ${response.message()} $errorBody")
-                    Toast.makeText(this@Projects, "Failed to delete user", Toast.LENGTH_SHORT).show()
-                }
-            }
+        val builder = AlertDialog.Builder(this@Projects)
+        builder.setTitle("Confirm Delete")
+        builder.setMessage("Are you sure you want to delete this project?")
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                // Log the throwable message
-                Log.e("Users", "Network error: ${t.message}", t)
-                Toast.makeText(this@Projects, "Network error", Toast.LENGTH_SHORT).show()
-            }
-        })
+        builder.setPositiveButton("Yes") { dialog, which ->
+            apiService.deleteProject(projectId).enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@Projects, "Project deleted successfully", Toast.LENGTH_SHORT).show()
+                        fetchProjects()
+                    } else {
+                        val errorBody = response.errorBody()?.string()
+                        Log.e("Projects", "Failed to delete project: ${response.code()} ${response.message()} $errorBody")
+                        Toast.makeText(this@Projects, "Failed to delete project", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Log.e("Projects", "Network error: ${t.message}", t)
+                    Toast.makeText(this@Projects, "Network error", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
+        builder.setNegativeButton("No") { dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
 }

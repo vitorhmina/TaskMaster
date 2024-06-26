@@ -24,13 +24,13 @@ public interface ApiService {
     @GET("observations/{id}")
     fun getObservationById(@Path("id")id: Int): Call<Observation>
 
-    @POST("observations")
+    @POST("observations/create")
     fun createObservation(@Body observation: Observation): Call<Observation>
 
-    @PUT("observations/{id}")
+    @PUT("observations/update/{id}")
     fun updateObservation(@Path("id") id: Int, @Body observation: Observation): Call<Observation>
 
-    @DELETE("observations/{id}")
+    @DELETE("observations/delete/{id}")
     fun deleteObservation(@Path("id") id: Int): Call<Void>
 
     // Users
@@ -48,22 +48,6 @@ public interface ApiService {
 
     @DELETE("users/delete/{id}")
     fun deleteUser(@Path("id") id: Int): Call<Void>
-
-    // User Types
-    @GET("usertypes")
-    fun getUserTypes(): Call<List<UserType>>
-
-    @GET("usertypes/{id}")
-    fun getUserTypeById(@Path("id") id: Int): Call<UserType>
-
-    @POST("usertypes")
-    fun createUserType(@Body userType: UserType): Call<UserType>
-
-    @PUT("usertypes/{id}")
-    fun updateUserType(@Path("id") id: Int, @Body userType: UserType): Call<UserType>
-
-    @DELETE("usertypes/{id}")
-    fun deleteUserType(@Path("id") id: Int): Call<Void>
 
     // User Projects
     @GET("user_projects/getProjectUsers/{id}")
@@ -91,13 +75,13 @@ public interface ApiService {
     @GET("projects/{id}")
     fun getProjectById(@Path("id") id: Int): Call<Project>
 
-    @POST("projects")
+    @POST("projects/create")
     fun createProject(@Body project: Project): Call<Project>
 
-    @PUT("projects/{id}")
+    @PUT("projects/update/{id}")
     fun updateProject(@Path("id") id: Int, @Body project: Project): Call<Project>
 
-    @DELETE("projects/{id}")
+    @DELETE("projects/delete/{id}")
     fun deleteProject(@Path("id") id: Int): Call<Void>
 
     // User Tasks
@@ -107,13 +91,13 @@ public interface ApiService {
     @GET("usertasks/{id}")
     fun getUserTaskById(@Path("id") id: Int): Call<UserTask>
 
-    @POST("usertasks")
+    @POST("usertasks/create")
     fun createUserTask(@Body userTask: UserTask): Call<UserTask>
 
-    @PUT("usertasks/{id}")
+    @PUT("usertasks/update/{id}")
     fun updateUserTask(@Path("id") id: Int, @Body userTask: UserTask): Call<UserTask>
 
-    @DELETE("usertasks/{id}")
+    @DELETE("usertasks/delete/{id}")
     fun deleteUserTask(@Path("id") id: Int): Call<Void>
 
     // Tasks
@@ -123,13 +107,13 @@ public interface ApiService {
     @GET("tasks/{id}")
     fun getTaskById(@Path("id") id: Int): Call<Task>
 
-    @POST("tasks")
+    @POST("tasks/create")
     fun createTask(@Body task: Task): Call<Task>
 
-    @PUT("tasks/{id}")
+    @PUT("tasks/update/{id}")
     fun updateTask(@Path("id") id: Int, @Body task: Task): Call<Task>
 
-    @DELETE("tasks/{id}")
+    @DELETE("tasks/delete/{id}")
     fun deleteTask(@Path("id") id: Int): Call<Void>
 
 }

@@ -6,14 +6,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.Task
-import android.util.Log
-import java.util.*
 import java.text.SimpleDateFormat
+import java.util.*
 
+class TaskAdapter(
+    private val taskList: List<Task>,
+    private val taskItemClickListener: TaskItemClickListener
+) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-class TaskAdapter(private val taskList: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
-
-    private val displayDateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+    interface TaskItemClickListener {
+        fun onItemClicked(taskId: Int)
+        fun onUsersClicked(taskId: Int)
+        fun onUpdateTask(taskId: Int)
+        fun onDeleteTask(taskId: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false)
@@ -21,21 +27,50 @@ class TaskAdapter(private val taskList: List<Task>) : RecyclerView.Adapter<TaskA
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val currentTask = taskList[position]
-        holder.taskName.text = currentTask.name
-
-        Log.d("TaskAdapter", "Task: ${currentTask.name}, Planned End Date: ${currentTask.plannedEndDate}")
-        holder.dueDate.text = "Due: ${displayDateFormat.format(currentTask.plannedEndDate)}"
-        holder.status.text = currentTask.status
+        val task = taskList[position]
+        holder.bind(task)
     }
 
     override fun getItemCount(): Int {
         return taskList.size
     }
 
-    class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val taskName: TextView = itemView.findViewById(R.id.taskName)
-        val dueDate: TextView = itemView.findViewById(R.id.dueDate)
-        val status: TextView = itemView.findViewById(R.id.status)
+    inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val taskNameTextView: TextView = itemView.findViewById(R.id.taskName)
+        private val taskStatusTextView: TextView = itemView.findViewById(R.id.status)
+        private val taskEndDateTextView: TextView = itemView.findViewById(R.id.dueDate)
+
+        private val isoDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+
+        fun bind(task: Task) {
+            taskNameTextView.text = task.name
+            taskStatusTextView.text = task.status
+            taskEndDateTextView.text = formatDate(task.plannedEndDate)
+
+            // Handle update task click
+            itemView.findViewById<View>(R.id.edit_button).setOnClickListener {
+                taskItemClickListener.onUpdateTask(task.id)
+            }
+
+            // Handle delete task click
+            itemView.findViewById<View>(R.id.delete_button).setOnClickListener {
+                taskItemClickListener.onDeleteTask(task.id)
+            }
+        }
+
+        private fun formatDate(dateString: String?): String {
+            return if (dateString != null) {
+                try {
+                    val date = isoDateFormat.parse(dateString)
+                    date?.let {
+                        SimpleDateFormat("MMM dd, yyyy", Locale.US).format(it)
+                    } ?: "Invalid date"
+                } catch (e: Exception) {
+                    "Invalid date"
+                }
+            } else {
+                "No date"
+            }
+        }
     }
 }

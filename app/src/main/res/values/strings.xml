@@ -57,4 +57,9 @@ Try again later!</string>
     <string name="edit_task">Edit Task</string>
     <string name="create_user">Create User</string>
     <string name="project_name">Project Name</string>
+    <string name="task_team">Task Team</string>
+    <string name="project_team">Project Team</string>
+    <string name="role">Role</string>
+    <string name="actual_end_date">Actual End Date</string>
+    <string name="actual_end_date_2">Actual End Date</string>
 </resources>
