@@ -59,7 +59,7 @@ public interface ApiService {
     @GET("user_projects/{id}")
     fun getUserProjectById(@Path("id") id: Int): Call<UserProject>
 
-    @POST("user_project/create")
+    @POST("user_projects/create")
     fun createUserProject(@Body userProject: UserProject): Call<UserProject>
 
     @PUT("user_projects/update/{id}")

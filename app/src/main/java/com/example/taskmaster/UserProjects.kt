@@ -32,6 +32,7 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
         apiService = RetrofitClient.getApiServiceWithAuth(this)
 
         projectId = intent.getIntExtra("projectId", -1)
+        Log.d(TAG, "Received projectId: $projectId")
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -46,7 +47,8 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
         // Set click listener for buttonAdd
         val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
         buttonAdd.setOnClickListener {
-            val intent = Intent(this, Admin_create_user::class.java)
+            val intent = Intent(this, Assign_User_to_Project::class.java)
+            intent.putExtra("projectId", projectId)
             startActivity(intent)
         }
 
@@ -77,7 +79,7 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
     }
 
     override fun onUpdateUserProject(userProjectId: Int) {
-        val intent = Intent(this, Admin_update_user::class.java)
+        val intent = Intent(this, Update_User_Project::class.java)
         intent.putExtra("userProjectId", userProjectId)
         startActivity(intent)
     }
@@ -113,6 +115,10 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    companion object {
+        private const val TAG = "Update_User_Project"
     }
 
 }

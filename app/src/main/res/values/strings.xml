@@ -67,4 +67,8 @@ Try again later!</string>
     <string name="create_project">Create Project</string>
     <string name="edit_project">Edit Project</string>
     <string name="update_project">Update Project</string>
+    <string name="assign_user_to_project">Assign User to Project</string>
+    <string name="asssign_to_project">Asssign to Project</string>
+    <string name="update_assignment">Update Assignment</string>
+    <string name="rating">Rating</string>
 </resources>

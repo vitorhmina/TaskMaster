@@ -39,6 +39,7 @@ class ProjectAdapter(
         private val projectNameTextView: TextView = itemView.findViewById(R.id.projectName)
         private val projectStatusTextView: TextView = itemView.findViewById(R.id.status)
         private val projectEndDateTextView: TextView = itemView.findViewById(R.id.dueDate)
+        private val projectProgressTextView: TextView = itemView.findViewById(R.id.progress)
 
         private val isoDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
 
@@ -46,6 +47,8 @@ class ProjectAdapter(
             projectNameTextView.text = project.name
             projectStatusTextView.text = project.status
             projectEndDateTextView.text = formatDate(project.plannedEndDate)
+            projectProgressTextView.text = "${project.completedTasks}/${project.totalTasks}"
+
 
             itemView.setOnClickListener {
                 listener.onItemClicked(project.id)

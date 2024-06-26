@@ -14,7 +14,7 @@
         android:theme="@style/Theme.TaskMaster"
         tools:targetApi="31">
         <activity
-            android:name=".Dashboard"
+            android:name=".SignIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,6 @@
         <activity android:name=".Intro3"/>
         <activity android:name=".SignUP_IN"/>
         <activity android:name=".SignUp"/>
-        <activity android:name=".SignIn"/>
         <activity android:name=".RecoverPassword"/>
         <activity android:name=".ReplacePassword"/>
         <activity android:name=".Projects"/>
@@ -41,6 +40,9 @@
         <activity android:name=".Update_Task"/>
         <activity android:name=".Create_Project"/>
         <activity android:name=".Update_Project"/>
+        <activity android:name=".Assign_User_to_Project"/>
+        <activity android:name=".Update_User_Project"/>
+        <activity android:name=".Dashboard"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

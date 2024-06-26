@@ -11,6 +11,6 @@ data class Project(
     @SerializedName("planned_end_date") val plannedEndDate: String,
     @SerializedName("actual_end_date") val actualEndDate: String?,
     val status: String,
-    val totalTasks: Int?,
-    val completedTasks: Int?
+    @SerializedName("totalTasks")val totalTasks: Int?,
+    @SerializedName("completedTasks")val completedTasks: Int?
 )
