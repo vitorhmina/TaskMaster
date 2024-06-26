@@ -13,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
@@ -32,6 +33,13 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
 
         // Fetch projects from API
         fetchProjects()
+
+        // Set click listener for buttonAdd
+        val buttonAdd = findViewById<ImageButton>(R.id.buttonAdd)
+        buttonAdd.setOnClickListener {
+            val intent = Intent(this, Create_Project::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchProjects() {
@@ -66,8 +74,6 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
         startActivity(intent)
     }
 
-
-    //NOT CORRECT FIX WHEN USER TYPE CONTEXT ADDED
     override fun onUpdateProject(projectId: Int) {
         val intent = Intent(this, Loading2::class.java)
         intent.putExtra("projectId", projectId)

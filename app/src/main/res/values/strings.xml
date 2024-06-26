@@ -64,4 +64,7 @@ Try again later!</string>
     <string name="actual_end_date_2">Actual End Date</string>
     <string name="update_task">Update Task</string>
     <string name="update_task_title">Update Task</string>
+    <string name="create_project">Create Project</string>
+    <string name="edit_project">Edit Project</string>
+    <string name="update_project">Update Project</string>
 </resources>

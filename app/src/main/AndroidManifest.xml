@@ -39,7 +39,8 @@
         <activity android:name=".UserProjects"/>
         <activity android:name=".Create_Task"/>
         <activity android:name=".Update_Task"/>
-
+        <activity android:name=".Create_Project"/>
+        <activity android:name=".Update_Project"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
