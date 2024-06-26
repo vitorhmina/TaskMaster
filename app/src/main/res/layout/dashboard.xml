@@ -67,7 +67,7 @@
                     android:layout_below="@+id/userImage"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:text="@string/users"
+                    android:text="@string/user_management"
                     android:textSize="15sp" />
 
                 <ImageView
@@ -101,11 +101,12 @@
                     android:layout_below="@+id/elecImage"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:text="Tasks"
+                    android:text="Project Management"
                     android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/elecImage"
+                    android:src="@drawable/project"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_centerHorizontal="true"
@@ -180,14 +181,14 @@
                     android:layout_below="@+id/taskImage"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:text="Tasks"
+                    android:text="@string/profile"
                     android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/taskImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/task"
+                    android:src="@drawable/profile"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp" />
             </RelativeLayout>

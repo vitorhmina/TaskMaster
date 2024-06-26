@@ -15,7 +15,7 @@ class EditProfile : AppCompatActivity() {
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
 
         buttonBack.setOnClickListener {
-            val intent = Intent(this, Profile::class.java)
+            val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
         }
     }

@@ -17,15 +17,13 @@ class Dashboard : AppCompatActivity() {
         val projectCard = findViewById<CardView>(R.id.projectCard)
         val taskCard = findViewById<CardView>(R.id.TaskCard)
 
-        // Configurar o clique nos CardViews
         userCard.setOnClickListener {
             val intent = Intent(this, Users::class.java)
             startActivity(intent)
-            //finish() // Opcional: encerra a MainActivity após iniciar a nova atividade
         }
 
         xxxxCard.setOnClickListener {
-            val intent = Intent(this, Users::class.java)
+            val intent = Intent(this, AdminProjects::class.java)
             startActivity(intent)
         }
 
@@ -35,7 +33,7 @@ class Dashboard : AppCompatActivity() {
         }
 
         taskCard.setOnClickListener {
-            val intent = Intent(this, Tasks::class.java)
+            val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
         }
     }

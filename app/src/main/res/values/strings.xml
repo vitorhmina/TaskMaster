@@ -71,4 +71,5 @@ Try again later!</string>
     <string name="asssign_to_project">Asssign to Project</string>
     <string name="update_assignment">Update Assignment</string>
     <string name="rating">Rating</string>
+    <string name="user_management">User Management</string>
 </resources>

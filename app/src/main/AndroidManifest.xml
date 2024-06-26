@@ -43,6 +43,7 @@
         <activity android:name=".Assign_User_to_Project"/>
         <activity android:name=".Update_User_Project"/>
         <activity android:name=".Dashboard"/>
+        <activity android:name=".AdminProjects"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
