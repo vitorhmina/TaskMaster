@@ -74,7 +74,7 @@
                     android:id="@+id/userImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/user_01"
+                    android:src="@drawable/users_02"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp" />
             </RelativeLayout>
@@ -106,7 +106,7 @@
 
                 <ImageView
                     android:id="@+id/elecImage"
-                    android:src="@drawable/project"
+                    android:src="@drawable/task"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_centerHorizontal="true"
@@ -188,7 +188,7 @@
                     android:id="@+id/taskImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/profile"
+                    android:src="@drawable/user_01"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp" />
             </RelativeLayout>
