@@ -75,7 +75,7 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
     }
 
     override fun onUpdateProject(projectId: Int) {
-        val intent = Intent(this, Loading2::class.java)
+        val intent = Intent(this, Update_Project::class.java)
         intent.putExtra("projectId", projectId)
         startActivity(intent)
     }

@@ -47,6 +47,14 @@ class ProjectAdapter(
             projectStatusTextView.text = project.status
             projectEndDateTextView.text = formatDate(project.plannedEndDate)
 
+            itemView.setOnClickListener {
+                listener.onItemClicked(project.id)
+            }
+
+            itemView.findViewById<View>(R.id.users_button).setOnClickListener {
+                listener.onUsersClicked(project.id)
+            }
+
             itemView.findViewById<View>(R.id.edit_button).setOnClickListener {
                 listener.onUpdateProject(project.id)
             }
