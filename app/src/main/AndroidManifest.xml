@@ -38,6 +38,8 @@
         <activity android:name=".Admin_create_user"/>
         <activity android:name=".UserProjects"/>
         <activity android:name=".Create_Task"/>
+        <activity android:name=".Update_Task"/>
+
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

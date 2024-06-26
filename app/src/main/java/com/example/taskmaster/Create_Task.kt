@@ -29,7 +29,6 @@ class Create_Task : AppCompatActivity() {
         setContentView(R.layout.create_task)
         apiService = getApiServiceWithAuth(this)
         projectId = intent.getIntExtra("projectId", -1)
-        Log.d(TAG, "projectId - create task: $projectId")
 
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
@@ -50,7 +49,6 @@ class Create_Task : AppCompatActivity() {
 
         setupDatePicker(findViewById(R.id.startDateEditText))
         setupDatePicker(findViewById(R.id.endDateEditText))
-        setupDatePicker(findViewById(R.id.actualEndDateEditText))
     }
 
     private fun navigateToTasksActivity() {
@@ -64,23 +62,18 @@ class Create_Task : AppCompatActivity() {
         val description = findViewById<EditText>(R.id.editTextDescription).text.toString()
         val startDateString = findViewById<EditText>(R.id.startDateEditText).text.toString()
         val endDateString = findViewById<EditText>(R.id.endDateEditText).text.toString()
-        val actualEndDateString = findViewById<EditText>(R.id.actualEndDateEditText).text.toString()
         val statusSelected = findViewById<Spinner>(R.id.spinnerOptions).selectedItem.toString()
 
-        // Parse String dates into Date objects
         val startDate = parseDate(startDateString)
         val endDate = parseDate(endDateString)
-        val actualEndDate = parseDate(actualEndDateString)
 
         if (startDate == null || endDate == null) {
             Toast.makeText(this@Create_Task, "Invalid date format", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Format dates to ISO-8601 for server
         val isoStartDate = formatDateToISO(startDate)
         val isoEndDate = formatDateToISO(endDate)
-        val isoActualEndDate = actualEndDate?.let { formatDateToISO(it) }
 
         // Ensure projectId is not null or invalid
         if (projectId == -1) {
@@ -89,7 +82,7 @@ class Create_Task : AppCompatActivity() {
         }
 
         // Create Task object with ISO-8601 date strings and valid projectId
-        val task = Task(0, name, description, isoStartDate, isoEndDate, isoActualEndDate, statusSelected, projectId)
+        val task = Task(0, name, description, isoStartDate, isoEndDate, null, statusSelected, projectId)
         Log.d(TAG, "Task creation request: $task")
 
         // Make API call to create task

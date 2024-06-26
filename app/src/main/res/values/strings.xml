@@ -62,4 +62,6 @@ Try again later!</string>
     <string name="role">Role</string>
     <string name="actual_end_date">Actual End Date</string>
     <string name="actual_end_date_2">Actual End Date</string>
+    <string name="update_task">Update Task</string>
+    <string name="update_task_title">Update Task</string>
 </resources>

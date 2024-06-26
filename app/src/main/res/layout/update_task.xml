@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="5dp"
-        android:text="@string/create_task"
+        android:text="@string/update_task_title"
         android:textColor="#000"
         android:textSize="45sp"
         android:textStyle="bold"
@@ -141,14 +141,38 @@
                     android:hint="@string/select_end_date" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/actual_end_date"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/actualEndDateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/calendar"
+                    android:focusable="false"
+                    android:hint="@string/actual_end_date_2" />
+            </LinearLayout>
+
             <Button
-                android:id="@+id/buttonCreateTask"
+                android:id="@+id/buttonUpdateTask"
                 style="@style/BlackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="25dp"
-                android:text="@string/create_task"
+                android:text="@string/update_task"
                 android:textSize="35sp" />
         </LinearLayout>
     </ScrollView>

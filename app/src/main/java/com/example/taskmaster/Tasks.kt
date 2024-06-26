@@ -40,8 +40,9 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         titleTextView = findViewById(R.id.title)
-        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
+        fetchProjectName()
 
+        val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             val intent = Intent(this, Projects::class.java)
             startActivity(intent)
@@ -55,7 +56,6 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
             startActivity(intent)
         }
 
-        fetchProjectName()
         fetchTasks()
     }
 
@@ -109,7 +109,6 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
     }
 
     override fun onItemClicked(taskId: Int) {
-        // Handle task item click as needed
     }
 
     override fun onUsersClicked(taskId: Int) {
@@ -119,7 +118,9 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
     }
 
     override fun onUpdateTask(taskId: Int) {
-        // Handle update task icon click as needed
+        val intent = Intent(this, Update_Task::class.java)
+        intent.putExtra("taskId", taskId)
+        startActivity(intent)
     }
 
     override fun onDeleteTask(taskId: Int) {
