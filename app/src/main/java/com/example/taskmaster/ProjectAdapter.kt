@@ -18,6 +18,7 @@ class ProjectAdapter(private val projectList: List<Project>, private val listene
 
     interface ProjectItemClickListener {
         fun onItemClicked(projectId: Int)
+        fun onUsersClicked(projectId: Int)
         fun onUpdateProject(projectId: Int)
         fun onDeleteProject(projectId: Int)
     }
@@ -41,6 +42,11 @@ class ProjectAdapter(private val projectList: List<Project>, private val listene
             listener.onItemClicked(currentProject.id)
         }
 
+        // Set a click listener for the entire card view
+        holder.usersIcon.setOnClickListener {
+            listener.onUsersClicked(currentProject.id)
+        }
+
         // Handle update project click
         holder.updateIcon.setOnClickListener {
             listener.onUpdateProject(currentProject.id)
@@ -61,6 +67,7 @@ class ProjectAdapter(private val projectList: List<Project>, private val listene
         val dueDate: TextView = itemView.findViewById(R.id.dueDate)
         val status: TextView = itemView.findViewById(R.id.status)
         val progress: TextView = itemView.findViewById(R.id.progress)
+        val usersIcon: ImageView = itemView.findViewById(R.id.users_button)
         val updateIcon: ImageView = itemView.findViewById(R.id.edit_button)
         val deleteIcon: ImageView = itemView.findViewById(R.id.delete_button)
 

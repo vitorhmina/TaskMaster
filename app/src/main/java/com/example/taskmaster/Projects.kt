@@ -59,6 +59,13 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
         startActivity(intent)
     }
 
+    override fun onUsersClicked(projectId: Int) {
+        val intent = Intent(this, UserProjects::class.java)
+        intent.putExtra("projectId", projectId)
+        startActivity(intent)
+    }
+
+
     //NOT CORRECT FIX WHEN USER TYPE CONTEXT ADDED
     override fun onUpdateProject(projectId: Int) {
         val intent = Intent(this, Loading2::class.java)

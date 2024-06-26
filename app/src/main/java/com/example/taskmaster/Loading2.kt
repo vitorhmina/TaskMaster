@@ -31,7 +31,7 @@ class Loading2 : AppCompatActivity() {
 
             override fun onFinish() {
                 Log.d("MainActivity", "Countdown finished, starting Intro1 activity...")
-                val intent = Intent(this@Loading2, Users::class.java)
+                val intent = Intent(this@Loading2, Projects::class.java)
                 startActivity(intent)
                 Log.d("MainActivity", "Intro1 activity started.")
                 finish()

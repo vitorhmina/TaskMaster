@@ -90,5 +90,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/check_circle_broken" />
 
+        <ImageView
+            android:id="@+id/users_button"
+            android:layout_width="29dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="112dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/users_02" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
