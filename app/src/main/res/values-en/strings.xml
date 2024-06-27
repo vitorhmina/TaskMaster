@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">TaskMaster</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="intro_smalltext">Simplify your path to success with us. Let’s start this journey together!</string>
@@ -23,8 +23,9 @@
     <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign Up</string>
     <string name="email">Email</string>
     <string name="name">Name</string>
-    <string name="username">Username</string>
+    <string name="username">Usern</string>
     <string name="no_internet_1">"Oops! No internet. "</string>
+    <string name="try_again">Try again</string>
     <string name="no_internet_2">Verify your internet connection.</string>
     <string name="account_create">Account created successfully</string>
     <string name="account_create_failed">Failed to create account. Try again later!</string>
@@ -73,5 +74,4 @@
     <string name="time_spent">Time Spent</string>
     <string name="assign_to_task">Assign to Task</string>
     <string name="location">Location</string>
-    <string name="try_again">Try again</string>
 </resources>
