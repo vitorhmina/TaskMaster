@@ -40,7 +40,7 @@ class Update_Task : AppCompatActivity() {
         }
 
         val spinnerStatus = findViewById<Spinner>(R.id.spinnerOptions)
-        val status = arrayOf("Not Started", "In Progress", "Completed")
+        val status = arrayOf("Not Started", "In Progress", "Completed", "Overdue")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, status)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerStatus.adapter = adapter

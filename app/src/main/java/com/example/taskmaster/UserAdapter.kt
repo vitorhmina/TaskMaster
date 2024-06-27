@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.User
 import android.util.Log
 import android.widget.ImageView
+import android.content.Context
+import androidx.core.content.ContextCompat
 
-class UserAdapter(private val userList: List<User>, private val listener: UserItemClickListener) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(private val userList: List<User>, private val listener: UserItemClickListener, private val context: Context) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     interface UserItemClickListener {
         fun onUpdateUser(userId: Int)
@@ -25,6 +27,25 @@ class UserAdapter(private val userList: List<User>, private val listener: UserIt
         val currentUser = userList[position]
         holder.userName.text = currentUser.name
         holder.userType.text = currentUser.userType
+
+        when (currentUser.userType) {
+            "Administrator" -> {
+                holder.userType.setTextColor(ContextCompat.getColor(context, R.color.admin_text))
+                holder.userType.setBackgroundResource(R.drawable.admin_bg)
+            }
+            "Project Manager" -> {
+                holder.userType.setTextColor(ContextCompat.getColor(context, R.color.project_manager_text))
+                holder.userType.setBackgroundResource(R.drawable.project_manager_bg)
+            }
+            "User" -> {
+                holder.userType.setTextColor(ContextCompat.getColor(context, R.color.user_text))
+                holder.userType.setBackgroundResource(R.drawable.user_bg)
+            }
+            else -> {
+                holder.userType.setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                holder.userType.setBackgroundResource(R.drawable.default_bg)
+            }
+        }
 
         holder.updateIcon.setOnClickListener {
             listener.onUpdateUser(currentUser.id)

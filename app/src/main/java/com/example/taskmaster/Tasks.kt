@@ -104,7 +104,7 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
                 if (response.isSuccessful) {
                     val taskList = response.body()
                     taskList?.let {
-                        val adapter = TaskAdapter(it, this@Tasks)
+                        val adapter = TaskAdapter(it, this@Tasks, this@Tasks)
                         recyclerView.adapter = adapter
                     }
                 } else {

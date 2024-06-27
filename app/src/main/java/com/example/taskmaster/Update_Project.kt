@@ -31,6 +31,8 @@ class Update_Project : AppCompatActivity() {
         setContentView(R.layout.update_project)
         apiService = getApiServiceWithAuth(this)
 
+        projectId = intent.getIntExtra("projectId", -1)
+
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             val intent = Intent(this@Update_Project, Projects::class.java)
@@ -38,7 +40,7 @@ class Update_Project : AppCompatActivity() {
         }
 
         val spinnerStatus = findViewById<Spinner>(R.id.spinnerOptions)
-        val status = arrayOf("Not Started", "In Progress", "Completed")
+        val status = arrayOf("Not Started", "In Progress", "Completed", "Overdue")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, status)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerStatus.adapter = adapter

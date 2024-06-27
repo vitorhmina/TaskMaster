@@ -52,7 +52,7 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
                 if (response.isSuccessful) {
                     val userList = response.body()
                     userList?.let {
-                        val adapter = UserAdapter(it, this@Users)
+                        val adapter = UserAdapter(it, this@Users, this@Users)
                         recyclerView.adapter = adapter
                     }
                 } else {

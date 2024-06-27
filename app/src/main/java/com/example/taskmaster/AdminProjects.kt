@@ -52,7 +52,7 @@ class AdminProjects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListen
                 if (response.isSuccessful) {
                     val projectList = response.body()
                     projectList?.let {
-                        val adapter = ProjectAdapter(it, this@AdminProjects)
+                        val adapter = ProjectAdapter(it, this@AdminProjects, this@AdminProjects)
                         recyclerView.adapter = adapter
                     }
                 } else {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="admin_bg">#CA8A04</color>
+    <color name="project_manager_bg">#154BC2</color>
+    <color name="user_bg">#16A363</color>
+    <color name="red_bg">#DC2626</color>
+    <color name="admin_text">#CA8A04</color>
+    <color name="project_manager_text">#154BC2</color>
+    <color name="user_text">#16A363</color>
+    <color name="red_text">#DC2626</color>
+</resources>

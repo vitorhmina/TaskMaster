@@ -1,5 +1,6 @@
 package com.example.taskmaster
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.retrofit.Task
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.core.content.ContextCompat
 
 class TaskAdapter(
     private val taskList: List<Task>,
-    private val taskItemClickListener: TaskItemClickListener
+    private val taskItemClickListener: TaskItemClickListener,
+    private val context: Context
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     interface TaskItemClickListener {
@@ -46,6 +49,29 @@ class TaskAdapter(
             taskNameTextView.text = task.name
             taskStatusTextView.text = task.status
             taskEndDateTextView.text = formatDate(task.plannedEndDate)
+
+            when (task.status) {
+                "Not Started" -> {
+                    taskStatusTextView.setTextColor(ContextCompat.getColor(context, R.color.user_text))
+                    taskStatusTextView.setBackgroundResource(R.drawable.user_bg)
+                }
+                "In Progress" -> {
+                    taskStatusTextView.setTextColor(ContextCompat.getColor(context, R.color.admin_text))
+                    taskStatusTextView.setBackgroundResource(R.drawable.admin_bg)
+                }
+                "Overdue" -> {
+                    taskStatusTextView.setTextColor(ContextCompat.getColor(context, R.color.red_text))
+                    taskStatusTextView.setBackgroundResource(R.drawable.red_bg)
+                }
+                "Completed" -> {
+                    taskStatusTextView.setTextColor(ContextCompat.getColor(context, R.color.project_manager_text))
+                    taskStatusTextView.setBackgroundResource(R.drawable.project_manager_bg)
+                }
+                else -> {
+                    taskStatusTextView.setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                    taskStatusTextView.setBackgroundResource(R.drawable.default_bg)
+                }
+            }
 
             itemView.findViewById<View>(R.id.users_button).setOnClickListener {
                 taskItemClickListener.onUsersClicked(task.id)

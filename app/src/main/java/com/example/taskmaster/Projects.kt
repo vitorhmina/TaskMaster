@@ -63,7 +63,7 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
                 if (response.isSuccessful) {
                     val projectList = response.body()
                     projectList?.let {
-                        val adapter = ProjectAdapter(it, this@Projects)
+                        val adapter = ProjectAdapter(it, this@Projects, this@Projects)
                         recyclerView.adapter = adapter
                     }
                 } else {
