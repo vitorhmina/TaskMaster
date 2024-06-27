@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.text.InputType
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -53,6 +54,16 @@ class EditProfile : AppCompatActivity() {
         buttonBack.setOnClickListener {
             val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
+        }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
         }
 
         apiService.getUserById(userId).enqueue(object : Callback<User> {

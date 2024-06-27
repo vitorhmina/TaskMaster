@@ -3,6 +3,7 @@ package com.example.taskmaster
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -39,6 +40,16 @@ class Update_User_Project : AppCompatActivity() {
         val buttonUpdate = findViewById<Button>(R.id.buttonUpdateUserProject)
         buttonUpdate.setOnClickListener {
             updateUserProject()
+        }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
         }
     }
 

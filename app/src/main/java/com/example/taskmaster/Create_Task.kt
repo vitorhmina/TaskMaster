@@ -5,6 +5,7 @@ import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.taskmaster.retrofit.ApiService
@@ -45,6 +46,16 @@ class Create_Task : AppCompatActivity() {
         val buttonCreateTask = findViewById<Button>(R.id.buttonCreateTask)
         buttonCreateTask.setOnClickListener {
             createTask()
+        }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
         }
 
         setupDatePicker(findViewById(R.id.startDateEditText))
