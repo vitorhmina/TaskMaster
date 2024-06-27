@@ -25,6 +25,7 @@
     <string name="name">Name</string>
     <string name="username">Username</string>
     <string name="no_internet_1">"Oops! No internet. "</string>
+    <string name="try_again">Try Again</string>
     <string name="no_internet_2">Verify your internet connection.</string>
     <string name="account_create">Account created successfully</string>
     <string name="account_create_failed">Failed to create account. Try again later!</string>
@@ -126,4 +127,5 @@
     <string name="user_created_successfully">User created successfully</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="logout_failed">Logout failed</string>
+    <string name="update_user">Update User</string>
 </resources>

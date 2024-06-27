@@ -129,4 +129,5 @@ Tente mais tarde!</string>
     <string name="user_created_successfully">Utilizador criado com sucesso</string>
     <string name="edit_profile">Editar Perfil</string>
     <string name="logout_failed">Logout falhou</string>
+    <string name="update_user">Atualizar Utilizador</string>
 </resources>
