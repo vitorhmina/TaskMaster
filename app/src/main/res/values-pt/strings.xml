@@ -29,12 +29,10 @@
     <string name="account_create">Conta criada com sucesso</string>
     <string name="account_create_failed">Erro ao criar conta. Tente outra vez mais tarde!</string>
     <string name="name_blank">Nome não pode ser vazio</string>
-    <string name="name_blank">N</string>
     <string name="name_length">Nome tem de ter pelo menos 2 carateres</string>
     <string name="name_char">Nome só pode conter letras e espaços</string>
     <string name="email_blank">Email não pode estar vazio</string>
     <string name="email_char">Formato inválido de email</string>
-    <string name="email_char">F</string>
     <string name="password_blank">Palavra-passe não pode ser vazia</string>
     <string name="password_length">Palavra-passe tem de ter pelo menos 6 carateres</string>
     <string name="password_char">Palavra-passe tem de conter letras, números e carateres especiais</string>
