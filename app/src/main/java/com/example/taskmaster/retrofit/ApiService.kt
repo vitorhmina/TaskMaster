@@ -85,19 +85,19 @@ public interface ApiService {
     fun deleteProject(@Path("id") id: Int): Call<Void>
 
     // User Tasks
-    @GET("usertasks")
-    fun getUserTasks(): Call<List<UserTask>>
+    @GET("user_tasks/getTaskUsers/{id}")
+    fun getTaskUsers(@Path("id") id: Int): Call<List<UserTask>>
 
-    @GET("usertasks/{id}")
+    @GET("user_tasks/{id}")
     fun getUserTaskById(@Path("id") id: Int): Call<UserTask>
 
-    @POST("usertasks/create")
+    @POST("user_tasks/create")
     fun createUserTask(@Body userTask: UserTask): Call<UserTask>
 
-    @PUT("usertasks/update/{id}")
+    @PUT("user_tasks/update/{id}")
     fun updateUserTask(@Path("id") id: Int, @Body userTask: UserTask): Call<UserTask>
 
-    @DELETE("usertasks/delete/{id}")
+    @DELETE("user_tasks/delete/{id}")
     fun deleteUserTask(@Path("id") id: Int): Call<Void>
 
     // Tasks

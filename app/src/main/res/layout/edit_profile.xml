@@ -162,7 +162,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/buttonCreateAccount"
+            android:id="@+id/buttonEditProfile"
             style="@style/BlackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

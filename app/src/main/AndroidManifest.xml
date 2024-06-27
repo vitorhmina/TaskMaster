@@ -44,6 +44,9 @@
         <activity android:name=".Update_User_Project"/>
         <activity android:name=".Dashboard"/>
         <activity android:name=".AdminProjects"/>
+        <activity android:name=".UserTasks"/>
+        <activity android:name=".Assign_User_to_Task"/>
+        <activity android:name=".Update_User_Task"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

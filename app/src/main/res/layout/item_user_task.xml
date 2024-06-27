@@ -28,11 +28,22 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/role"
+            android:id="@+id/completionRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:text="Project Manager"
+            android:text="@string/completion_rate"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/userName"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+        <TextView
+            android:id="@+id/timeSpent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:padding="4dp"
+            android:text="@string/time_spent"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/userName"
             app:layout_constraintTop_toBottomOf="@+id/userName" />
@@ -42,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="68dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/edit_05" />
@@ -51,8 +62,8 @@
             android:id="@+id/deleteIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="320dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="316dp"
+            android:layout_marginTop="68dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/trash_02" />

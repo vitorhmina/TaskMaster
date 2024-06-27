@@ -111,7 +111,7 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
     }
 
     override fun onUsersClicked(taskId: Int) {
-        val intent = Intent(this, UserProjects::class.java)
+        val intent = Intent(this, UserTasks::class.java)
         intent.putExtra("taskId", taskId)
         startActivity(intent)
     }

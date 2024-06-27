@@ -72,4 +72,8 @@ Try again later!</string>
     <string name="update_assignment">Update Assignment</string>
     <string name="rating">Rating</string>
     <string name="user_management">User Management</string>
+    <string name="completion_rate">Completion Rate</string>
+    <string name="time_spent">Time Spent</string>
+    <string name="assign_to_task">Assign to Task</string>
+    <string name="location">Location</string>
 </resources>
