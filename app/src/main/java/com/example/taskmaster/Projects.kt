@@ -13,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -43,6 +44,16 @@ class Projects : AppCompatActivity(), ProjectAdapter.ProjectItemClickListener {
         buttonAdd.setOnClickListener {
             val intent = Intent(this, Create_Project::class.java)
             startActivity(intent)
+        }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
         }
     }
 

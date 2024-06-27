@@ -3,6 +3,7 @@ package com.example.taskmaster
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -56,6 +57,16 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
         }
 
         fetchTasks()
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
     }
 
     private fun fetchProjectName() {

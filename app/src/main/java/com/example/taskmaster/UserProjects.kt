@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -49,6 +50,16 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
             val intent = Intent(this, Assign_User_to_Project::class.java)
             intent.putExtra("projectId", projectId)
             startActivity(intent)
+        }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
         }
 
         fetchProjectTeam()

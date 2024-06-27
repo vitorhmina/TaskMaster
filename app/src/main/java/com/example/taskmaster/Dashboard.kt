@@ -77,5 +77,15 @@ class Dashboard : AppCompatActivity() {
             val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
         }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -50,6 +51,16 @@ class UserTasks : AppCompatActivity(), UserTaskAdapter.UserTaskItemClickListener
             val intent = Intent(this, Assign_User_to_Task::class.java)
             intent.putExtra("taskId", taskId)
             startActivity(intent)
+        }
+
+        findViewById<View>(R.id.projects).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.home).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
+        }
+        findViewById<View>(R.id.profile).setOnClickListener {
+            BottomNavigationHandler.handleNavigationClicks(this, it)
         }
 
         fetchTaskTeam()
