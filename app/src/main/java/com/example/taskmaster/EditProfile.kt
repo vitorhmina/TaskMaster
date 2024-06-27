@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.taskmaster.retrofit.ApiService
+import com.example.taskmaster.retrofit.Repository
 import com.example.taskmaster.retrofit.RetrofitClient
 import com.example.taskmaster.retrofit.User
 import retrofit2.Call
@@ -26,6 +27,7 @@ import retrofit2.Response
 class EditProfile : AppCompatActivity() {
 
     private lateinit var apiService: ApiService
+    private var repository = Repository()
 
     private var isPasswordVisible = false
     private var isRepeatPasswordVisible = false
@@ -42,13 +44,13 @@ class EditProfile : AppCompatActivity() {
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
         userId = sharedPreferences.getInt("userId", -1)
-        Log.d(TAG, "userId: $userId")
 
         val textPassword = findViewById<EditText>(R.id.textPassword)
         val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)
         val textRepeatPassword = findViewById<EditText>(R.id.textRepeatPassword)
         val imageViewRepeatPasswordVisibility = findViewById<ImageView>(R.id.imageViewRepeatPasswordVisibility)
         val buttonUpdateProfile = findViewById<Button>(R.id.buttonEditProfile)
+        val buttonLogout = findViewById<ImageButton>(R.id.buttonLogout)
 
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
@@ -77,15 +79,17 @@ class EditProfile : AppCompatActivity() {
                         userType = user.userType
 
                     } else {
-                        Toast.makeText(this@EditProfile, "User not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditProfile,
+                            getString(R.string.user_not_found), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@EditProfile, "Failed to fetch user details", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditProfile,
+                        getString(R.string.failed_to_fetch_user_details), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-                Toast.makeText(this@EditProfile, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@EditProfile, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e("Admin_update_user", "Failed to fetch user details", t)
             }
         })
@@ -99,6 +103,18 @@ class EditProfile : AppCompatActivity() {
             isRepeatPasswordVisible = !isRepeatPasswordVisible
             togglePasswordVisibility(textRepeatPassword, imageViewRepeatPasswordVisibility, isRepeatPasswordVisible)
         }
+
+        buttonLogout.setOnClickListener {
+            repository.logout(this) { success, message ->
+                if (success) {
+                    val intent = Intent(this, SignUP_IN::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, message ?: getString(R.string.logout_failed), Toast.LENGTH_LONG).show()
+                }
+            }
+            }
 
         buttonUpdateProfile.setOnClickListener {
             val name = findViewById<EditText>(R.id.editTextName).text.toString()
@@ -115,19 +131,21 @@ class EditProfile : AppCompatActivity() {
                 call.enqueue(object : Callback<User> {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if (response.isSuccessful) {
-                            Toast.makeText(this@EditProfile, "User updated successfully", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@EditProfile,
+                                getString(R.string.user_updated_successfully), Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@EditProfile, Users::class.java)
                             startActivity(intent)
                             finish()
                         } else {
-                            Toast.makeText(this@EditProfile, "Failed to update user", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@EditProfile,
+                                getString(R.string.failed_to_update_user), Toast.LENGTH_SHORT).show()
                         }
                     }
 
 
 
                     override fun onFailure(call: Call<User>, t: Throwable) {
-                        Toast.makeText(this@EditProfile, "Network error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditProfile, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                     }
                 })
             }

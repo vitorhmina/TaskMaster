@@ -64,15 +64,17 @@ class Update_User_Project : AppCompatActivity() {
                         email = userProject.email ?: ""
                         projectId = userProject.projectId
                     } else {
-                        Toast.makeText(this@Update_User_Project, "User Project not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Update_User_Project,
+                            getString(R.string.user_project_not_found), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@Update_User_Project, "Failed to fetch User Project details", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_User_Project,
+                        getString(R.string.failed_to_fetch_user_project_details), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<UserProject>, t: Throwable) {
-                Toast.makeText(this@Update_User_Project, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_User_Project, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Failed to fetch User Project details", t)
             }
         })
@@ -89,7 +91,7 @@ class Update_User_Project : AppCompatActivity() {
         val rating = findViewById<EditText>(R.id.editTextRating).text.toString()
 
         if (email.isBlank()) {
-            Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.email_cannot_be_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -104,22 +106,23 @@ class Update_User_Project : AppCompatActivity() {
 
         Log.d(TAG, "User Project update request: $userProject")
 
-        // Make API call to update user project
         apiService.updateUserProject(userProjectId, userProject).enqueue(object : Callback<UserProject?> {
             override fun onResponse(call: Call<UserProject?>, response: Response<UserProject?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Update_User_Project, "User Project updated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_User_Project,
+                        getString(R.string.user_project_updated_successfully), Toast.LENGTH_SHORT).show()
                     navigateToUserProjectsActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to update User Project: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Update_User_Project, "Failed to update User Project: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_User_Project,
+                        getString(R.string.failed_to_update_user_project), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<UserProject?>, t: Throwable) {
-                Toast.makeText(this@Update_User_Project, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_User_Project, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

@@ -59,4 +59,16 @@ class Repository() {
             }
         })
     }
+
+    fun logout(context: Context, callback: (Boolean, String?) -> Unit) {
+        val sharedPreferences = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+        with(sharedPreferences.edit()) {
+            remove("token")
+            remove("userId")
+            remove("userType")
+            apply()
+        }
+        callback(true, null)
+    }
 }

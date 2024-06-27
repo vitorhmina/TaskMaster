@@ -64,15 +64,17 @@ class Update_Project : AppCompatActivity() {
                         val statusIndex = status.indexOf(project.status)
                         spinnerStatus.setSelection(statusIndex)
                     } else {
-                        Toast.makeText(this@Update_Project, "Project not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Update_Project,
+                            getString(R.string.project_not_found), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@Update_Project, "Failed to fetch project details", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_Project,
+                        getString(R.string.failed_to_fetch_project_details), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Project>, t: Throwable) {
-                Toast.makeText(this@Update_Project, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_Project, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Failed to fetch project details", t)
             }
         })
@@ -111,7 +113,7 @@ class Update_Project : AppCompatActivity() {
         val actualEndDate = parseDate(actualEndDateString)
 
         if (startDate == null || endDate == null) {
-            Toast.makeText(this@Update_Project, "Invalid date format", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Update_Project, getString(R.string.invalid_date_format), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -126,18 +128,20 @@ class Update_Project : AppCompatActivity() {
         call.enqueue(object : Callback<Project?> {
             override fun onResponse(call: Call<Project?>, response: Response<Project?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Update_Project, "Project updated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_Project,
+                        getString(R.string.project_updated_successfully), Toast.LENGTH_SHORT).show()
                     navigateToProjectsActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to update project: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Update_Project, "Failed to update project: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_Project,
+                        getString(R.string.failed_to_update_project), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Project?>, t: Throwable) {
-                Toast.makeText(this@Update_Project, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_Project, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

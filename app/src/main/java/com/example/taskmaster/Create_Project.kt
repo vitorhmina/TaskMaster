@@ -77,7 +77,7 @@ class Create_Project : AppCompatActivity() {
         val endDate = parseDate(endDateString)
 
         if (startDate == null || endDate == null) {
-            Toast.makeText(this@Create_Project, "Invalid date format", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Create_Project, getString(R.string.invalid_date_format), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -91,18 +91,20 @@ class Create_Project : AppCompatActivity() {
         call.enqueue(object : Callback<Project?> {
             override fun onResponse(call: Call<Project?>, response: Response<Project?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Create_Project, "Project created successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Create_Project,
+                        getString(R.string.project_created_successfully), Toast.LENGTH_SHORT).show()
                     navigateToProjectsActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to create project: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Create_Project, "Failed to create project: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Create_Project,
+                        getString(R.string.failed_to_create_project), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Project?>, t: Throwable) {
-                Toast.makeText(this@Create_Project, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Create_Project, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

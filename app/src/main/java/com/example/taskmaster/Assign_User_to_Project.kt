@@ -51,7 +51,7 @@ class Assign_User_to_Project : AppCompatActivity() {
         val role = findViewById<EditText>(R.id.editTextRole).text.toString()
 
         if (projectId == -1) {
-            Toast.makeText(this@Assign_User_to_Project, "Invalid project ID", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Assign_User_to_Project, getString(R.string.invalid_project_id), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -62,18 +62,18 @@ class Assign_User_to_Project : AppCompatActivity() {
         call.enqueue(object : Callback<UserProject?> {
             override fun onResponse(call: Call<UserProject?>, response: Response<UserProject?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Assign_User_to_Project, "User assigned successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Assign_User_to_Project, getString(R.string.user_assigned_successfully), Toast.LENGTH_SHORT).show()
                     navigateToUserProjectsActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to assign user: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Assign_User_to_Project, "Failed to assign user: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Assign_User_to_Project, getString(R.string.failed_to_assign_user), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<UserProject?>, t: Throwable) {
-                Toast.makeText(this@Assign_User_to_Project, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Assign_User_to_Project, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

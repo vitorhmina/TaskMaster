@@ -91,30 +91,32 @@ class UserProjects : AppCompatActivity(), UserProjectAdapter.UserProjectItemClic
 
     override fun onDeleteUserProject(userProjectId: Int) {
         val builder = AlertDialog.Builder(this@UserProjects)
-        builder.setTitle("Confirm Remove User")
-        builder.setMessage("Are you sure you want to remove this user from the project?")
+        builder.setTitle(getString(R.string.confirm_remove_user_title))
+        builder.setMessage(getString(R.string.remove_project_msg))
 
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
             apiService.deleteUserProject(userProjectId).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@UserProjects, "User removed from project successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@UserProjects,
+                            getString(R.string.user_removed_from_project_successfully), Toast.LENGTH_SHORT).show()
                         fetchProjectTeam()
                     } else {
                         val errorBody = response.errorBody()?.string()
                         Log.e("Users", "Failed to remove user from project: ${response.code()} ${response.message()} $errorBody")
-                        Toast.makeText(this@UserProjects, "Failed to remove user from project", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@UserProjects,
+                            getString(R.string.failed_to_remove_user_from_project), Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.e("UserProjects", "Network error: ${t.message}", t)
-                    Toast.makeText(this@UserProjects, "Network error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@UserProjects, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 }
             })
         }
 
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
             dialog.dismiss()
         }
 

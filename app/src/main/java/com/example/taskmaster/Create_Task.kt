@@ -79,7 +79,7 @@ class Create_Task : AppCompatActivity() {
         val endDate = parseDate(endDateString)
 
         if (startDate == null || endDate == null) {
-            Toast.makeText(this@Create_Task, "Invalid date format", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Create_Task, getString(R.string.invalid_date_format), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -87,7 +87,8 @@ class Create_Task : AppCompatActivity() {
         val isoEndDate = formatDateToISO(endDate)
 
         if (projectId == -1) {
-            Toast.makeText(this@Create_Task, "Invalid project ID", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Create_Task,
+                getString(R.string.invalid_project_id), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -98,18 +99,20 @@ class Create_Task : AppCompatActivity() {
         call.enqueue(object : Callback<Task?> {
             override fun onResponse(call: Call<Task?>, response: Response<Task?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Create_Task, "Task created successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Create_Task,
+                        getString(R.string.task_created_successfully), Toast.LENGTH_SHORT).show()
                     navigateToTasksActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to create task: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Create_Task, "Failed to create task: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Create_Task,
+                        getString(R.string.failed_to_create_task), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Task?>, t: Throwable) {
-                Toast.makeText(this@Create_Task, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Create_Task, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

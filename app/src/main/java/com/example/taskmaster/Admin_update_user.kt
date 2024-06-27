@@ -63,15 +63,15 @@ class Admin_update_user : AppCompatActivity() {
                         val userTypeIndex = userTypes.indexOf(user.userType)
                         spinnerUserType.setSelection(userTypeIndex)
                     } else {
-                        Toast.makeText(this@Admin_update_user, "User not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Admin_update_user, getString(R.string.user_not_found), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@Admin_update_user, "Failed to fetch user details", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Admin_update_user, getString(R.string.failed_to_fetch_user_details), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-                Toast.makeText(this@Admin_update_user, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Admin_update_user, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e("Admin_update_user", "Failed to fetch user details", t)
             }
         })
@@ -107,17 +107,17 @@ class Admin_update_user : AppCompatActivity() {
                 call.enqueue(object : Callback<User> {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if (response.isSuccessful) {
-                            Toast.makeText(this@Admin_update_user, "User updated successfully", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@Admin_update_user, getString(R.string.user_updated_successfully), Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@Admin_update_user, Users::class.java)
                             startActivity(intent)
                             finish()
                         } else {
-                            Toast.makeText(this@Admin_update_user, "Failed to update user", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@Admin_update_user, getString(R.string.failed_to_update_user), Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<User>, t: Throwable) {
-                        Toast.makeText(this@Admin_update_user, "Network error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Admin_update_user, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                     }
                 })
             }

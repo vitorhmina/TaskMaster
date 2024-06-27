@@ -93,30 +93,31 @@ class UserTasks : AppCompatActivity(), UserTaskAdapter.UserTaskItemClickListener
 
     override fun onDeleteUserTask(userTaskId: Int) {
         val builder = AlertDialog.Builder(this@UserTasks)
-        builder.setTitle("Confirm Remove User")
-        builder.setMessage("Are you sure you want to remove this user from the task?")
+        builder.setTitle(getString(R.string.confirm_remove_user_title))
+        builder.setMessage(getString(R.string.confirm_remove_user_msg))
 
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
             apiService.deleteUserTask(userTaskId).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@UserTasks, "User removed from task successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@UserTasks,
+                            getString(R.string.user_removed_from_task_successfully), Toast.LENGTH_SHORT).show()
                         fetchTaskTeam()
                     } else {
                         val errorBody = response.errorBody()?.string()
                         Log.e("Users", "Failed to remove user from task: ${response.code()} ${response.message()} $errorBody")
-                        Toast.makeText(this@UserTasks, "Failed to remove user from task", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@UserTasks,getString(R.string.failed_to_remove_user_from_task), Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.e("UserTasks", "Network error: ${t.message}", t)
-                    Toast.makeText(this@UserTasks, "Network error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@UserTasks, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 }
             })
         }
 
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
             dialog.dismiss()
         }
 

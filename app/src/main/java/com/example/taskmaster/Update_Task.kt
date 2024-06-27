@@ -66,15 +66,17 @@ class Update_Task : AppCompatActivity() {
 
                         projectId = task.projectId
                     } else {
-                        Toast.makeText(this@Update_Task, "Task not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Update_Task,
+                            getString(R.string.task_not_found), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@Update_Task, "Failed to fetch task details", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_Task,
+                        getString(R.string.failed_to_fetch_task_details), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Task>, t: Throwable) {
-                Toast.makeText(this@Update_Task, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_Task, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Failed to fetch task details", t)
             }
         })
@@ -114,7 +116,8 @@ class Update_Task : AppCompatActivity() {
         val actualEndDate = parseDate(actualEndDateString)
 
         if (startDate == null || endDate == null) {
-            Toast.makeText(this@Update_Task, "Invalid date format", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Update_Task,
+                getString(R.string.invalid_date_format), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -129,18 +132,20 @@ class Update_Task : AppCompatActivity() {
         call.enqueue(object : Callback<Task?> {
             override fun onResponse(call: Call<Task?>, response: Response<Task?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Update_Task, "Task updated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_Task,
+                        getString(R.string.task_updated_successfully), Toast.LENGTH_SHORT).show()
                     navigateToTasksActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to update task: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Update_Task, "Failed to update task: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Update_Task,
+                        getString(R.string.failed_to_update_task), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Task?>, t: Throwable) {
-                Toast.makeText(this@Update_Task, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_Task, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

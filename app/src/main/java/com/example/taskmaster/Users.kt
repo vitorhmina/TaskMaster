@@ -74,18 +74,20 @@ class Users : AppCompatActivity(), UserAdapter.UserItemClickListener {
         apiService.deleteUser(userId).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Users, "User deleted successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Users,
+                        getString(R.string.user_deleted_successfully), Toast.LENGTH_SHORT).show()
                     fetchUsers()
                 } else {
                     val errorBody = response.errorBody()?.string()
                     Log.e("Users", "Failed to delete user: ${response.code()} ${response.message()} $errorBody")
-                    Toast.makeText(this@Users, "Failed to delete user", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Users,
+                        getString(R.string.failed_to_delete_user), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Log.e("Users", "Network error: ${t.message}", t)
-                Toast.makeText(this@Users, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Users, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
             }
         })
     }

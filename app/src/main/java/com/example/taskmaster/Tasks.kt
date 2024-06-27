@@ -135,31 +135,32 @@ class Tasks : AppCompatActivity(), TaskAdapter.TaskItemClickListener {
 
     override fun onDeleteTask(taskId: Int) {
         val builder = AlertDialog.Builder(this@Tasks)
-        builder.setTitle("Confirm Delete")
-        builder.setMessage("Are you sure you want to delete this task?")
+        builder.setTitle(getString(R.string.confirm_delete))
+        builder.setMessage(getString(R.string.are_you_sure_you_want_to_delete_this_task))
 
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
             apiService.deleteTask(taskId).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@Tasks, "Task deleted successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Tasks,
+                            getString(R.string.task_deleted_successfully), Toast.LENGTH_SHORT).show()
                         fetchTasks()
                     } else {
                         val errorBody = response.errorBody()?.string()
                         Log.e("Tasks", "Failed to delete task: ${response.code()} ${response.message()} $errorBody")
-                        Toast.makeText(this@Tasks, "Failed to delete task", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Tasks,
+                            getString(R.string.failed_to_delete_task), Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
-                    // Log the throwable message
                     Log.e("Tasks", "Network error: ${t.message}", t)
-                    Toast.makeText(this@Tasks, "Network error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Tasks, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 }
             })
         }
 
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
             dialog.dismiss()
         }
 

@@ -75,21 +75,21 @@ class Update_User_Task : AppCompatActivity() {
                     } else {
                         Toast.makeText(
                             this@Update_User_Task,
-                            "User Task not found",
+                            getString(R.string.user_task_not_found),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                 } else {
                     Toast.makeText(
                         this@Update_User_Task,
-                        "Failed to fetch User Task details",
+                        getString(R.string.failed_to_fetch_user_task_details),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
 
             override fun onFailure(call: Call<UserTask>, t: Throwable) {
-                Toast.makeText(this@Update_User_Task, "Network error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Update_User_Task, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Failed to fetch User Task details", t)
             }
         })
@@ -108,7 +108,7 @@ class Update_User_Task : AppCompatActivity() {
 
 
         if (email.isBlank()) {
-            Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.email_cannot_be_empty), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -129,13 +129,12 @@ class Update_User_Task : AppCompatActivity() {
 
         Log.d(TAG, "User Task update request: $userTask")
 
-        // Make API call to update user project
         apiService.updateUserTask(userTaskId, userTask).enqueue(object : Callback<UserTask?> {
             override fun onResponse(call: Call<UserTask?>, response: Response<UserTask?>) {
                 if (response.isSuccessful) {
                     Toast.makeText(
                         this@Update_User_Task,
-                        "User Task updated successfully",
+                        getString(R.string.user_task_updated_successfully),
                         Toast.LENGTH_SHORT
                     ).show()
                     navigateToUserTasksActivity()
@@ -145,7 +144,7 @@ class Update_User_Task : AppCompatActivity() {
                     Log.e(TAG, "Failed to update User Task: ${response.code()} - $errorBody")
                     Toast.makeText(
                         this@Update_User_Task,
-                        "Failed to update User Task: $errorBody",
+                        getString(R.string.failed_to_update_user_task),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -154,7 +153,7 @@ class Update_User_Task : AppCompatActivity() {
             override fun onFailure(call: Call<UserTask?>, t: Throwable) {
                 Toast.makeText(
                     this@Update_User_Task,
-                    "Network error: ${t.message}",
+                    getString(R.string.no_internet_2),
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.e(TAG, "Network error", t)

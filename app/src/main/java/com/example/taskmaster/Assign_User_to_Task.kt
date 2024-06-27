@@ -51,7 +51,8 @@ class Assign_User_to_Task : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
 
         if (taskId == -1) {
-            Toast.makeText(this@Assign_User_to_Task, "Invalid task ID", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@Assign_User_to_Task,
+                getString(R.string.invalid_task_id), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -66,18 +67,20 @@ class Assign_User_to_Task : AppCompatActivity() {
         call.enqueue(object : Callback<UserTask?> {
             override fun onResponse(call: Call<UserTask?>, response: Response<UserTask?>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Assign_User_to_Task, "User assigned successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Assign_User_to_Task,
+                        getString(R.string.user_assigned_successfully), Toast.LENGTH_SHORT).show()
                     navigateToUserTasksActivity()
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Failed to assign user: ${response.code()} - $errorBody")
-                    Toast.makeText(this@Assign_User_to_Task, "Failed to assign user: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Assign_User_to_Task,
+                        getString(R.string.failed_to_assign_user), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<UserTask?>, t: Throwable) {
-                Toast.makeText(this@Assign_User_to_Task, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Assign_User_to_Task, getString(R.string.no_internet_2), Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "Network error", t)
             }
         })

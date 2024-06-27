@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/buttonLogout"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerInside"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toEndOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="60dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/backbutton"
         app:layout_constraintBottom_toTopOf="@+id/profile_image"
         app:layout_constraintEnd_toStartOf="@+id/title"
-        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.033" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="45dp"
         android:text="@string/profile"
         android:textColor="#000"
         android:textSize="45sp"
@@ -33,13 +47,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@drawable/round"
+        android:src="@drawable/user_01"
         app:layout_constraintBottom_toTopOf="@+id/formContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,140 +62,134 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/edit_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/circle_black_ground"
-        android:padding="12dp"
-        android:src="@drawable/edit"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-        app:layout_constraintEnd_toEndOf="@+id/profile_image"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="@+id/profile_image"
-        app:layout_constraintVertical_bias="1.0"
-        app:tint="@android:color/white"/>
-
-    <LinearLayout
-        android:id="@+id/formContainer"
-        android:layout_width="411dp"
-        android:layout_height="420dp"
-        android:background="@drawable/rounded_background"
-        android:backgroundTint="#D9D9D9"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/edit_icon"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintVertical_bias="0.0">
 
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="414dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/user"
-            android:drawablePadding="8dp"
-            android:padding="12dp"
-            android:text="John" />
-
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/email"
-            android:drawablePadding="8dp"
-            android:padding="12dp"
-            android:text="John@gmail.com" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:background="@drawable/rounded_background"
+            android:backgroundTint="#D9D9D9"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <EditText
-                android:id="@+id/textPassword"
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/edit_text_background"
-                android:drawableStart="@drawable/password"
+                android:drawableStart="@drawable/user"
                 android:drawablePadding="8dp"
-                android:hint="@string/new_password"
-                android:inputType="textPassword"
-                android:padding="12dp" />
-
-            <ImageView
-                android:id="@+id/imageViewPasswordVisibility"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignBottom="@+id/textPassword"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="334dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/visibility" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+                android:padding="12dp"
+                android:text="John" />
 
             <EditText
-                android:id="@+id/textRepeatPassword"
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/edit_text_background"
-                android:drawableStart="@drawable/password"
+                android:drawableStart="@drawable/email"
                 android:drawablePadding="8dp"
-                android:hint="@string/repeat_password"
-                android:inputType="textPassword"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:text="John@gmail.com" />
 
-            <ImageView
-                android:id="@+id/imageViewRepeatPasswordVisibility"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignBottom="@+id/textRepeatPassword"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="334dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/edit_text_background"
+                    android:drawableStart="@drawable/password"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/new_password"
+                    android:inputType="textPassword"
+                    android:padding="12dp" />
+
+                <ImageView
+                    android:id="@+id/imageViewPasswordVisibility"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignBottom="@+id/textPassword"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="334dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/visibility" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/textRepeatPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/edit_text_background"
+                    android:drawableStart="@drawable/password"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/repeat_password"
+                    android:inputType="textPassword"
+                    android:padding="12dp" />
+
+                <ImageView
+                    android:id="@+id/imageViewRepeatPasswordVisibility"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignBottom="@+id/textRepeatPassword"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="334dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/visibility" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/buttonEditProfile"
+                style="@style/BlackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/visibility" />
-        </RelativeLayout>
+                android:text="@string/edit_profile"
+                android:textSize="35sp" />
 
-        <Button
-            android:id="@+id/buttonEditProfile"
-            style="@style/BlackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="1dp"
-            android:text="Edit Profile"
-            android:textSize="35sp" />
-    </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
     <include
         android:id="@+id/bottom"
         layout="@layout/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
