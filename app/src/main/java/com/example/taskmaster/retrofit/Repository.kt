@@ -35,12 +35,19 @@ class Repository() {
                 if (response.isSuccessful && response.body() != null) {
                     val token = response.body()!!.token
                     val userId = response.body()!!.userId
+                    val userType = response.body()!!.userType
+
                     val sharedPreferences = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
                     with(sharedPreferences.edit()) {
                         putString("token", token)
                         putInt("userId", userId)
+                        putString("userType", userType)
                         apply()
                     }
+
+                    Log.d("LoginResponse", "User ID: $userId")
+                    Log.d("LoginResponse", "User Type: $userType")
+
                     callback(true, null)
                 } else {
                     callback(false, "Failed to sign in: ${response.code()} ${response.message()}")

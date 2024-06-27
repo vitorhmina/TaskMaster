@@ -116,8 +116,6 @@ class Admin_update_user : AppCompatActivity() {
                         }
                     }
 
-
-
                     override fun onFailure(call: Call<User>, t: Throwable) {
                         Toast.makeText(this@Admin_update_user, "Network error", Toast.LENGTH_SHORT).show()
                     }
@@ -125,8 +123,6 @@ class Admin_update_user : AppCompatActivity() {
             }
         }
     }
-
-
 
     private fun isValidName(name: String): Boolean {
         return when {
@@ -198,4 +194,6 @@ class Admin_update_user : AppCompatActivity() {
         }
         editText.setSelection(editText.text.length)
     }
+
+
 }

@@ -39,8 +39,9 @@ class EditProfile : AppCompatActivity() {
 
         apiService = RetrofitClient.getApiServiceWithAuth(this)
 
-        val sharedPreferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
         userId = sharedPreferences.getInt("userId", -1)
+        Log.d(TAG, "userId: $userId")
 
         val textPassword = findViewById<EditText>(R.id.textPassword)
         val imageViewPasswordVisibility = findViewById<ImageView>(R.id.imageViewPasswordVisibility)
@@ -194,4 +195,7 @@ class EditProfile : AppCompatActivity() {
         editText.setSelection(editText.text.length)
     }
 
+    companion object {
+        private const val TAG = "Edit_Profile"
+    }
 }

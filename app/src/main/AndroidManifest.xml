@@ -47,6 +47,7 @@
         <activity android:name=".UserTasks"/>
         <activity android:name=".Assign_User_to_Task"/>
         <activity android:name=".Update_User_Task"/>
+        <activity android:name=".EditProfile"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
